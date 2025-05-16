@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión</title>
+  
+  <!-- Enlace al archivo CSS para estilos -->
+  <link rel="stylesheet" href="css/estilos.css" />
+
+</head>
+
+<body>
+  <!-- Contenedor principal del formulario -->
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+
+    <!-- Formulario de login -->
+    <form action="#" method="POST">
+      <!-- Campo para ingresar el nombre de usuario -->
+      <label for="usuario">Nombre de usuario:</label>
+      <input type="text" id="usuario" name="usuario" required />
+
+      <!-- Campo para ingresar la contraseña -->
+      <label for="clave">Contraseña:</label>
+      <input type="password" id="clave" name="clave" required />
+
+      <!-- Botón para enviar el formulario -->
+      <button type="submit" class="btn-login">Entrar</button>
+    </form>
+
+    <!-- Link para ir al formulario de registro (usuarios nuevos) -->
+    <div class="registro-link">
+      ¿No tenés cuenta? <a href="usuario/registro.html">Registrate</a>
+    </div>
+  </div>
+
+  <!-- Enlace al archivo JS que contiene la lógica del login -->
+  <!-- La ruta es relativa desde login.html que está en raíz, js/login.js -->
+  <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Noticias - Malvinas Argentinas</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+  <!-- Encabezado (Header) con logo, publicidad y login -->
+  <header>
+    <div id="logo-tarjeta" class="logo-tarjeta">
+      <img id="logo" src="imagenes/logoMuni.jpg" alt="Logo Municipalidad">
+    </div>
+
+    <div class="publicidad">
+      <!-- Espacio para publicidad o banners -->
+      <p>Publicidad aquí</p>
+    </div>
+
+    <div class="login">
+      <!-- Botón para iniciar sesión -->
+      <button id="loginBtn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="container">
+    <h2>Noticias Destacadas</h2>
+
+    <!-- Cuadrícula de noticias -->
+    <div class="grid-noticias">
+      <!-- Tarjetas de noticia (se llenarán con JS o de forma dinámica) -->
+      <div class="noticia">Noticia 1</div>
+      <div class="noticia">Noticia 2</div>
+      <div class="noticia">Noticia 3</div>
+      <div class="noticia">Noticia 4</div>
+      <div class="noticia">Noticia 5</div>
+      <div class="noticia">Noticia 6</div>
+      <div class="noticia">Noticia 7</div>
+      <div class="noticia">Noticia 8</div>
+    </div>
+  </main>
+
+  <!-- Pie de página (Footer) -->
+  <footer>
+    <ul>
+      <li><a href="#">Trabajá con nosotros</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Dirección del Palacio Municipal</a></li>
+    </ul>
+    <p>&copy; 2025 Municipio de Malvinas Argentinas</p>
+  </footer>
+
+  <!-- Script principal -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

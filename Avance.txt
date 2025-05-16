@@ -1,0 +1,6 @@
+-Al dar click en cualquier noticia, se abre la misma con los mismos datos que tienen las portadas en la pagina principal.
+-Cuando un vecino inicia sesion, se le redirige a la pagina de inicio con la sesion iniciada, si se cambia de pagina, la sesion se cierra  pero si se vuelve a la apgina principal, la sesio sigue abierta.
+-Cuando el usuario(vecino) inicio sesion, aparece un boton con su identificador y si se toca en el se puede cerrar sesión.
+-Todo esto desde la vista de un usuario como lector o lector registrado.
+-El logo tiene animacion.
+-Se agrego una seccion de comentarios en las noticias visible solo cuando el usuario esta en linea. Si el usuario esta en linea y comenta, al publicar su comentario sale un cartel "Publicacion en revision" que desaparece a los 2 segundos.

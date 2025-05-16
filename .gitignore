@@ -1,0 +1,30 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de VS Code
+.vscode/
+
+# Archivos temporales de sistema operativo o editores
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Archivos de subida u output local
+*.zip
+*.tar.gz
+
+# Carpeta de producción local (si existiera)
+dist/
+build/
+
+# Archivos personales
+*.env
+
+# Archivos de base de datos local (si tuvieras en el futuro)
+*.sqlite
+*.db
+
+# node_modules si usaras Node en algún momento
+node_modules/

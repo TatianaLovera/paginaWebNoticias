@@ -1,0 +1,76 @@
+<!-- noticia.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle de Noticia</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+  <header>
+
+    <div id="logo-tarjeta" class="logo-tarjeta">
+      <img id="logo" src="imagenes/logoMuni.jpg" alt="Logo Municipalidad">
+    </div>
+    <!--
+    <div class="logo">
+      <img id="logo" src="imagenes/logoMuni.jpg" alt="Logo Municipio de Malvinas Argentinas" style="height: 60px;" />
+    </div>
+    -->
+
+    <div class="publicidad">
+      <p>Publicidad aquí</p>
+    </div>
+    <div class="login">
+      <button id="loginBtn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="detalle-noticia">
+      <h1 id="tituloNoticia"></h1>
+      <p id="fechaNoticia" class="fecha"></p>
+      <img id="imagenNoticia" class="imagen-detalle" src="" alt="Imagen de la noticia">
+      <p id="contenidoNoticia"></p>
+      <p><strong>Autor:</strong> <span id="autorNoticia"></span></p>
+      <p><strong>Categoría:</strong> <span id="categoriaNoticia"></span></p>
+      <p id="direccionNoticia" style="display:none;"><strong>Dirección:</strong> <span></span></p>
+    </article>
+
+    <!--Seccion de comentarios-->
+    <section class="comentarios">
+      <h2>Preguntas sobre esta noticia</h2>
+      <div id="mensajeLogin" class="mensaje-info" style="display:none;">
+        <p>Debés <a href="login.html">iniciar sesión</a> para poder dejar una pregunta.</p>
+      </div>
+
+      <div id="formComentario" style="display:none;">
+        <textarea id="comentarioTexto" placeholder="Escribí tu pregunta..." rows="4"></textarea>
+        <button id="enviarComentario">Enviar pregunta</button>
+      </div>
+
+      <div id="confirmacionComentario" class="mensaje-confirmacion" style="display:none;">
+        <p>✅ Publicación en revisión.</p>
+      </div>
+    </section>
+
+  </main>
+
+
+
+  <footer>
+    <ul>
+      <li><a href="#">Trabajá con nosotros</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Dirección del Palacio Municipal</a></li>
+    </ul>
+    <p>&copy; 2025 Municipio de Malvinas Argentinas</p>
+  </footer>
+
+  <script src="js/noticia.js"></script>
+</body>
+
+</html>

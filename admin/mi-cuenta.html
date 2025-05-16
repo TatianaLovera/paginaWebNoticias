@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi cuenta - Administrador</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <!-- Encabezado: Logo a la izquierda, botón a la derecha -->
+  <header class="header">
+    <img src="../imagenes/logoMuni.jpg" alt="Logo del Municipio" class="logo">
+    <div class="boton-cuenta-contenedor">
+      <button id="miCuentaBtn">Mi cuenta ▾</button>
+      <!-- Menú desplegable que aparece al hacer clic -->
+      <div id="menuOpciones" class="menu-opciones oculto">
+        <a href="noticias-pendientes.html">Noticias pendientes</a>
+        <a href="preguntas-pendientes.html">Preguntas pendientes</a>
+        <a href="#" id="cerrarSesion">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido principal (mismo diseño base que el index) -->
+  <main>
+    <h1>Bienvenido a su cuenta, Administrador</h1>
+    <p>Desde aquí podrá acceder a las noticias pendientes, preguntas de vecinos y otras gestiones.</p>
+  </main>
+
+  <!-- Pie de página con links útiles -->
+  <footer class="footer">
+    <p><a href="#">Trabajá con nosotros</a> | Dirección del Palacio Municipal</p>
+  </footer>
+
+  <!-- Script que maneja la lógica del menú y sesión -->
+  <script src="../js/mi-cuenta.js"></script>
+</body>
+</html>
