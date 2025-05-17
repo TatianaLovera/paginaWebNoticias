@@ -1,24 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const miCuentaBtn = document.getElementById('miCuentaBtn');
-  const menuOpciones = document.getElementById('menuOpciones');
-  const cerrarSesion = document.getElementById('cerrarSesion');
 
-  // Alterna visibilidad del menú al hacer clic en "Mi cuenta"
-  miCuentaBtn.addEventListener('click', () => {
-    menuOpciones.classList.toggle('oculto');
+document.addEventListener('DOMContentLoaded', () => {
+  const miCuentaBtn = document.getElementById('miCuentaBtn'); // Botón "Mi cuenta"
+  const menuOpciones = document.getElementById('menuOpciones'); // Menú desplegable
+  const cerrarSesion = document.getElementById('cerrarSesion'); // Opción para cerrar sesión
+
+  // Alterna la visibilidad del menú al hacer clic en "Mi cuenta"
+  miCuentaBtn?.addEventListener('click', () => {
+    menuOpciones?.classList.toggle('oculto');
   });
 
-  // Al cerrar sesión, limpiamos sessionStorage y redirigimos al inicio
-  cerrarSesion.addEventListener('click', (e) => {
+  // Al hacer clic en "Cerrar sesión", se limpia la sesión y se redirige al inicio
+  cerrarSesion?.addEventListener('click', (e) => {
     e.preventDefault();
     sessionStorage.removeItem('usuarioLogueado');
     window.location.href = '../index.html';
   });
 
-  // Verificación de sesión (por seguridad)
+  // Verificación de sesión: si no hay un usuario logueado o no es administrador, redirige al login
   const usuario = JSON.parse(sessionStorage.getItem('usuarioLogueado'));
-  if (!usuario || usuario.tipo !== 'administrador') {
-    // Si no hay sesión válida, redirigimos al login
+  if (!usuario || usuario.rol !== "administrador") {
     window.location.href = '../login.html';
   }
+
+  // Redirección al hacer clic en "Noticias pendientes" del menú
+  const linkNoticiasPendientes = document.querySelector('a[href="noticias-pendientes.html"]');
+
+  linkNoticiasPendientes?.addEventListener('click', (e) => {
+    e.preventDefault(); // Evitamos comportamiento por defecto
+    window.location.href = 'noticias-pendientes.html'; // Redirigimos correctamente
+  });
 });

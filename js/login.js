@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // 4. Mensaje de bienvenida según el rol
       alert(`Bienvenido, ${usuarioIngresado}! Rol: ${rol}`);
 
-      // 5. Guardar en localStorage si querés usarlo en otras partes
+      // 5. Guardar en sessionStorage si querés usarlo en otras partes
       sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
 
       // 6. Redirigir al index siempre independientemente de que rol sea 
