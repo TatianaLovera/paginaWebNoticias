@@ -336,6 +336,11 @@ input[type="password"] {
   margin-left: 5px;
 }
 
+
+
+/*=============COMPORTAMIENTO DEL BOTON CUANDO SE PRESIONA=============*/
+/* Transición y animación para el menú desplegable */
+
 /* Ítems del menú */
 .menu-desplegable li {
   list-style: none;
@@ -345,11 +350,6 @@ input[type="password"] {
   font-weight: 500;
 }
 
-.menu-desplegable li:hover {
-  background-color: #007b5e;
-}
-
-/* Transición y animación para el menú desplegable */
 .menu-desplegable {
   display: none;
   opacity: 0;

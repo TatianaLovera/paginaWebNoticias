@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = '../login.html';
   }
 
-  // Redirección al hacer clic en "Noticias pendientes" del menú
-  const linkNoticiasPendientes = document.querySelector('a[href="noticias-pendientes.html"]');
+  
 
   linkNoticiasPendientes?.addEventListener('click', (e) => {
     e.preventDefault(); // Evitamos comportamiento por defecto
