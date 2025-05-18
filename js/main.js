@@ -107,12 +107,20 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = 'usuario/perfil.html';
       });
 
-        // Opción: Mis preguntas
-        const opcionMisPreguntasVec = document.createElement('li');
-        opcionMisPreguntasVec.textContent = 'Mis preguntas';
-        opcionMisPreguntasVec.addEventListener('click', () => {
+      // Opción: Mis preguntas
+      const opcionMisPreguntasVec = document.createElement('li');
+      opcionMisPreguntasVec.textContent = 'Mis preguntas';
+      opcionMisPreguntasVec.addEventListener('click', () => {
+        const rutaActual = window.location.pathname;
+        
+        // Si estás en una subcarpeta como /usuario/
+        if (rutaActual.includes('/usuario/')) {
+          window.location.href = '../enConstruccion.html';
+        } else {
           window.location.href = 'enConstruccion.html';
-        });
+        }
+      });
+
 
         // Opción: Cerrar sesión
         const opcionCerrarSesionVec = document.createElement('li');

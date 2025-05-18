@@ -40,4 +40,27 @@
   <!-- La ruta es relativa desde login.html que está en raíz, js/login.js -->
   <script src="js/login.js"></script>
 </body>
+
+  <!-- Botón para volver al inicio -->
+<div style="text-align: center; margin: 40px 0;">
+  <a href="index.html" style="text-decoration: none;">
+    <button style="
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #07b60f;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    " onmouseover="this.style.backgroundColor='#1e366d'; this.style.transform='scale(1.05)';"
+       onmouseout="this.style.backgroundColor='#07b60f'; this.style.transform='scale(1)';">
+      🏠 Volver al inicio
+    </button>
+  </a>
+</div>
+
 </html>

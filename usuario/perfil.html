@@ -9,6 +9,19 @@
 </head>
 
 <body>
+
+        <script>
+    // Redirigir al login si no hay un usuario logueado
+    document.addEventListener('DOMContentLoaded', () => {
+        const usuarioLogueado = sessionStorage.getItem('usuarioLogueado');
+        
+        if (!usuarioLogueado) {
+        // Nadie está logueado, redirigimos al login
+        window.location.href = '../login.html';
+        }
+    });
+    </script>
+
     <!-- Encabezado (Header) -->
     <header>
         <div id="logo-tarjeta" class="logo-tarjeta">
