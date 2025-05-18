@@ -45,8 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const opcionNoticiasPendientes = document.createElement('li');
         opcionNoticiasPendientes.textContent = 'Noticias pendientes';
         opcionNoticiasPendientes.addEventListener('click', () => {
-        const rutaActual = window.location.pathname;
-        
+          const rutaActual = window.location.pathname;        
         // Si estás en una subcarpeta como /usuario/
         if (rutaActual.includes('/usuario/')) {
           window.location.href = '../enConstruccion.html';
@@ -59,8 +58,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const opcionPreguntasPendientes = document.createElement('li');
         opcionPreguntasPendientes.textContent = 'Preguntas pendientes';
         opcionPreguntasPendientes.addEventListener('click', () => {
+
         const rutaActual = window.location.pathname;
         
+
         // Si estás en una subcarpeta como /usuario/
         if (rutaActual.includes('/usuario/')) {
           window.location.href = '../enConstruccion.html';
@@ -96,8 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const opcionMisPreguntasEmp = document.createElement('li');
         opcionMisPreguntasEmp.textContent = 'Mis preguntas';
         opcionMisPreguntasEmp.addEventListener('click', () => {
-        const rutaActual = window.location.pathname;
-        
+          const rutaActual = window.location.pathname;        
         // Si estás en una subcarpeta como /usuario/
         if (rutaActual.includes('/usuario/')) {
           window.location.href = '../enConstruccion.html';
@@ -239,54 +239,68 @@ function cargarNoticiasPublicas() {
     });
 }
 
-function configurarBusqueda() {
-  const btnBuscar = document.getElementById('btn-buscar');
-  const campoBusqueda = document.getElementById('campo-busqueda');
+// === Selección de elementos del DOM ===
+const btnFiltros = document.getElementById('btnFiltros');
+const dropdownFiltros = document.getElementById('dropdownFiltros');
+const btnAplicarFiltros = document.getElementById('btnAplicarFiltros');
 
-  if (!btnBuscar || !campoBusqueda) return;
+const inputTexto = document.getElementById('filtroTexto');
+const inputFecha = document.getElementById('filtroFecha');
+const inputCategoria = document.getElementById('filtroCategoria');
 
-  btnBuscar.addEventListener('click', () => {
-    campoBusqueda.style.display = campoBusqueda.style.display === 'none' ? 'block' : 'none';
-    campoBusqueda.focus();
+// === Alternar visibilidad del menú de filtros ===
+btnFiltros.addEventListener('click', () => {
+  dropdownFiltros.style.display = 
+    dropdownFiltros.style.display === 'none' || dropdownFiltros.style.display === ''
+      ? 'block'
+      : 'none';
+});
+
+// === Ocultar el menú si se hace clic fuera ===
+window.addEventListener('click', (event) => {
+  if (!btnFiltros.contains(event.target) && !dropdownFiltros.contains(event.target)) {
+    dropdownFiltros.style.display = 'none';
+  }
+});
+
+// === Lista de noticias original (debería estar definida globalmente) ===
+// Asegurate de tener algo como esto cargado en tu archivo:
+let listaNoticias = []; // Este array debe estar definido previamente con tus noticias
+
+// === Función que filtra y muestra las noticias en base a los criterios ===
+function aplicarFiltros() {
+  const texto = inputTexto.value.trim().toLowerCase();
+  const fecha = inputFecha.value;
+  const categoria = inputCategoria.value;
+
+  const noticiasFiltradas = listaNoticias.filter(noticia => {
+    const coincideTexto =
+      noticia.titulo.toLowerCase().includes(texto) ||
+      noticia.resumen.toLowerCase().includes(texto) ||
+      texto === '';
+
+    const coincideFecha = fecha === '' || noticia.fecha === fecha;
+    const coincideCategoria = categoria === '' || noticia.categoria === categoria;
+
+    return coincideTexto || coincideFecha || coincideCategoria;
   });
 
-  campoBusqueda.addEventListener('input', () => {
-    const query = campoBusqueda.value.toLowerCase();
-    const tarjetas = document.querySelectorAll('.noticia');
+  // Reemplazar noticias en pantalla con las filtradas
+  mostrarNoticias(noticiasFiltradas); // Función que debes tener para renderizar las tarjetas
 
-    tarjetas.forEach(tarjeta => {
-      const titulo = tarjeta.querySelector('h3').textContent.toLowerCase();
-      const descripcion = tarjeta.querySelector('p').textContent.toLowerCase();
-
-      if (titulo.includes(query) || descripcion.includes(query)) {
-        tarjeta.style.display = 'block';
-      } else {
-        tarjeta.style.display = 'none';
-      }
-    });
-  });
+  console.log('Filtrado con:', { texto, fecha, categoria });
 }
 
-function configurarFiltro() {
-  const filtroFecha = document.getElementById('filtro-fecha');
-  const filtroCategoria = document.getElementById('filtro-categoria');
-  const btnAplicarFiltros = document.getElementById('btn-aplicar-filtros');
+// === Lógica para botón de aplicar filtros ===
+btnAplicarFiltros.addEventListener('click', () => {
+  aplicarFiltros();
+  dropdownFiltros.style.display = 'none';
+});
 
-  if (!btnAplicarFiltros) return;
-
-  btnAplicarFiltros.addEventListener('click', () => {
-    const fechaSeleccionada = filtroFecha.value;
-    const categoriaSeleccionada = filtroCategoria.value.toLowerCase();
-
-    const filtradas = todasLasNoticias.filter(noticia => {
-      const coincideFecha = !fechaSeleccionada || noticia.fecha === fechaSeleccionada;
-      const coincideCategoria = !categoriaSeleccionada || noticia.categoria.toLowerCase() === categoriaSeleccionada;
-      return coincideFecha && coincideCategoria;
-    });
-
-    mostrarNoticias(filtradas);
-  });
-}
+// === Búsqueda instantánea al escribir ===
+inputTexto.addEventListener('input', () => {
+  aplicarFiltros();
+});
 
 
 // Mostrar noticias en la cuadrícula principal

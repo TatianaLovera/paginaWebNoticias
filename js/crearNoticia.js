@@ -65,7 +65,7 @@ function obtenerNuevoId() {
     return ultimoId + 1;
 }
 
-// Función simulada que no hace nada con la noticia (como pediste)
+// Función simulada que no hace nada con la noticia
 function registrarNoticia(noticia) {
     // Aquí debería guardarse la noticia en el almacenamiento
     // Por ahora no hace nada

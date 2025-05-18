@@ -17,13 +17,7 @@
       src="https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/logoMuni.jpg"  
       alt="Logo Municipalidad">
     </div>
-
-        <!--Botón de busqueda de noticia-->
-    <div class="busqueda-container">
-      <button id="btn-buscar">🔍</button>
-      <input type="text" id="campo-busqueda" placeholder="Buscar noticia..." style="display: none;">
-    </div>
-
+      
     <div class="publicidad">
       <!-- Espacio para publicidad o banners -->
       <p>MUNICIPALIDAD DE MALVINAS ARGENTINAS</p>
@@ -39,26 +33,50 @@
   <main class="container">
     <h2>Noticias Destacadas</h2>
 
-    <!--Para un filtro de noticias por fecha y categoria-->
-    <div class="filtros-noticias">
-      <label for="filtro-fecha">Fecha:</label>
-      <input type="date" id="filtro-fecha">
+ <!-- Contenedor del filtro desplegable similar al menú 'Mi cuenta' -->
+<div class="filtro-desplegable-container">
 
-      <label for="filtro-categoria">Tema:</label>
-      <select id="filtro-categoria">
-        <option value="">Todos</option>
-        <option value="salud">Salud</option>
-        <option value="medio ambiente">Medio Ambiente</option>
-        <option value="interes general">Interés General</option>
-        <option value="cultura">Cultura</option>
-        <option value="infraestructura">Infraestructura</option>
-        <option value="deporte">Deporte</option>
-        <option value="ecologia">Ecología</option>
-        <option value="educacion">Educación</option>
-      </select>
 
-      <button id="btn-aplicar-filtros">Filtrar</button>
-    </div>
+  <!-- Botón que muestra u oculta el dropdown de filtros -->
+  <button id="btnFiltros" class="btn-menu-desplegable">
+    Filtrar noticias ▾
+  </button>
+>>>>>>> 7d520e3 (modifico vista y logica de los filtros de busqueda)
+
+  <!-- Contenido desplegable con los filtros -->
+  <div id="dropdownFiltros" class="dropdown-contenido" style="display: none;">
+
+    <!-- Filtro por texto -->
+    <label for="filtroTexto" class="filtro-label">Buscar texto:</label>
+    <input type="text" id="filtroTexto" name="filtroTexto" class="filtro-input" placeholder="Buscar...">
+
+    <!-- Filtro por fecha -->
+    <label for="filtroFecha" class="filtro-label">Por fecha:</label>
+    <input type="date" id="filtroFecha" name="filtroFecha" class="filtro-input">
+
+    <!-- Filtro por categoría -->
+    <label for="filtroCategoria" class="filtro-label">Por categoría:</label>
+    <select id="filtroCategoria" name="filtroCategoria" class="filtro-input">
+      <option value="">Todas</option>
+      <option value="salud">Salud</option>
+      <option value="medio ambiente">Medio Ambiente</option>
+      <option value="interes general">Interés General</option>
+      <option value="cultura">Cultura</option>
+      <option value="infraestructura">Infraestructura</option>
+      <option value="deporte">Deporte</option>
+      <option value="ecologia">Ecologia</option>
+      <option value="educacion">Educación</option>
+        
+      <!-- Agregar más categorías según corresponda -->
+    </select>
+
+    <!-- Botón para aplicar filtros -->
+    <button id="btnAplicarFiltros" class="btn-verde-institucional">
+      Aplicar
+    </button>
+
+  </div>
+</div>
 
 
     <!-- Cuadrícula de noticias -->
@@ -87,7 +105,6 @@
 
   <!-- Script principal -->
   <script src="js/main.js"></script>
-    <!--  <script src="js/usuario-menu.js"></script> -->
 
 </body>
 

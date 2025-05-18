@@ -443,3 +443,113 @@ input[type="password"] {
 }
 
 
+/* ========================================== */
+/* Estilo uniforme para imágenes en tarjetas  */
+/* ========================================== */
+
+/* Aplica a las imágenes dentro de cada contenedor de noticia */
+.noticia img {
+  width: 100%;                /* Que la imagen ocupe todo el ancho del contenedor */
+  height: 200px;              /* Fijamos una altura uniforme */
+  object-fit: cover;          /* Recorta la imagen si es muy grande, manteniendo proporción */
+  display: block;             /* Elimina espacios fantasma por comportamiento inline */
+  border-top-left-radius: 10px;  /* Bordes redondeados arriba (si usás tarjetas con borde redondeado) */
+  border-top-right-radius: 10px;
+}
+
+/* ============================= */
+/* Versión responsive para móvil */
+/* ============================= */
+@media (max-width: 480px) {
+  .noticia img {
+    height: 160px;            /* Menor altura en pantallas más chicas */
+  }
+}
+
+
+/* Contenedor general del filtro desplegable */
+.filtro-desplegable-container {
+  position: relative;
+  margin: 1rem 0 2rem 0;
+  width: 250px; /* ancho fijo, ajustable */
+}
+
+/* Botón similar a los del menú desplegable */
+.btn-menu-desplegable {
+  width: 100%;
+  background-color: #1b5e20; /* verde institucional */
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.btn-menu-desplegable:hover {
+  background-color: #2e7d32;
+}
+
+/* Contenedor desplegable con filtros */
+.dropdown-contenido {
+  position: absolute;
+  background-color: white;
+  border: 1.5px solid #1b5e20; /* verde institucional */
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 1rem;
+  margin-top: 0.5rem;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Etiquetas dentro del dropdown */
+.filtro-label {
+  display: block;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: #1b5e20; /* verde institucional */
+  font-size: 0.95rem;
+}
+
+/* Inputs y select del dropdown */
+.filtro-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Botón aplicar filtros con colores institucionales */
+.btn-verde-institucional {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #1b5e20;
+  color: white;
+  font-weight: 700;
+  padding: 0.7rem 0;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-verde-institucional:hover {
+  background-color: #2e7d32;
+}
+
+/* Responsive: ajusta ancho a 100% en pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .filtro-desplegable-container {
+    width: 100%;
+  }
+}
+
