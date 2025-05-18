@@ -94,6 +94,7 @@
 }
 
 /*Desvanecimiento de cartel "Publicacion en revision*/
+/*
 .mensaje-publicacion {
   background-color: #d9edf7;
   color: #31708f;
@@ -106,6 +107,7 @@
   opacity: 1;
   transition: opacity 1s ease-out;
 }
+*/
 
 .mensaje-publicacion.fade-out {
   opacity: 0;
