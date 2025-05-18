@@ -320,6 +320,66 @@ input[type="password"] {
 
 /*====FIN de la PARTE DE LA NOTICIA INDIVIDUAL ======*/
 
+@keyframes desplegar {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clase que activa la animación */
+.menu-visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*Boton de busqueda de noticias en el menu principal*/
+.busqueda-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+#campo-busqueda {
+  margin-left: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/*Boton de usuario*/
+
+.btn-usuario {
+  background-color: #2ca02c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-usuario:hover {
+  background-color: #1b6f1b;
+}
+
+.btn-usuario::after {
+  content: " ▼";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+
 /* Asegurar que el menú no se corte en dispositivos chicos */
 @media (max-width: 600px) {
   .menu-usuario {
@@ -380,5 +440,85 @@ input[type="password"] {
   display: inline-block;
 }
 
+/*Filtros de fecha y tema*/
+
+.filtros-noticias {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem; /* Espacio entre filtros */
+  margin-bottom: 1rem; /* Separación con el contenido siguiente */
+}
+
+.filtros-noticias div {
+  display: flex;
+  flex-direction: column;
+}
+
+/*Opciones del perfil del usuario*/
+
+.perfil-opciones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.opciones-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-top: 5px solid #0a4c91;
+}
+
+.opciones-container h2 {
+  text-align: center;
+  color: #0a4c91;
+}
+
+.opciones-container label {
+  display: block;
+  margin-top: 15px;
+  color: #0a4c91;
+}
+
+.opciones-container input[type="text"],
+.opciones-container input[type="email"],
+.opciones-container input[type="password"] {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: baseline;
+  margin-top: 15px;
+}
+
+.checkbox-container input {
+  margin-right: 10px;
+}
+
+.btn-guardar {
+  margin-top: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-guardar:hover {
+  background-color: #218838;
+}
 
 
