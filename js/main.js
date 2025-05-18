@@ -99,6 +99,14 @@ document.addEventListener('DOMContentLoaded', function () {
         break;
 
       case 'vecino':
+
+      // Opción: perfil
+     const opcionPerfilVec = document.createElement('li');
+      opcionPerfil.textContent = 'Mi perfil';
+      opcionPerfil.addEventListener('click', () => {
+        window.location.href = '/usuario/perfil.html';
+      });
+
         // Opción: Mis preguntas
         const opcionMisPreguntasVec = document.createElement('li');
         opcionMisPreguntasVec.textContent = 'Mis preguntas';
@@ -115,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Agregamos las opciones al menú
+        menu.appendChild(opcionPerfilVec);
         menu.appendChild(opcionMisPreguntasVec);
         menu.appendChild(opcionCerrarSesionVec);
         break;
