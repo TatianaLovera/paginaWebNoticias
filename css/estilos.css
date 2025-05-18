@@ -174,12 +174,32 @@ label {
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
 }
+
+.input-con-ojo {
+  position: relative;
+}
+
+.input-con-ojo input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el ojo */
+  box-sizing: border-box;
+}
+
+.input-con-ojo button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
 
 .btn-login {
     margin-top: 20px;

@@ -57,7 +57,6 @@ function guardarDatos(event) {
 
     // Redireccionar a index.html luego de 30 segundos
     window.location.href = "index.html";
-    
 }
 
 // Función para obtener nuevo id simulado (incremental)

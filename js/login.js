@@ -49,6 +49,17 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       // 7. Mostrar mensaje de error si los datos no coinciden
       alert('Usuario o contraseña incorrectos.');
+      inputUsuario.value = "";
+      inputClave.value = "";
     }
   });
+  const toggleBtn = document.getElementById('toggleClave');
+const claveInput = document.getElementById('clave');
+
+toggleBtn.addEventListener('click', function () {
+  const tipoActual = claveInput.getAttribute('type');
+  claveInput.setAttribute('type', tipoActual === 'password' ? 'text' : 'password');
+  toggleBtn.textContent = tipoActual === 'password' ? '🙈' : '👁️';
+});
+
 });

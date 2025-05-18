@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const loginBtn = document.getElementById('loginBtn');
 
+
   // Verificar si hay un usuario logueado en sessionStorage
   const usuarioGuardado = sessionStorage.getItem('usuarioLogueado');
   if (usuarioGuardado) {
@@ -44,14 +45,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const opcionNoticiasPendientes = document.createElement('li');
         opcionNoticiasPendientes.textContent = 'Noticias pendientes';
         opcionNoticiasPendientes.addEventListener('click', () => {
-          window.location.href = 'admin/noticias-pendientes.html';
+        const rutaActual = window.location.pathname;
+        
+        // Si estás en una subcarpeta como /usuario/
+        if (rutaActual.includes('/usuario/')) {
+          window.location.href = '../enConstruccion.html';
+        } else {
+          window.location.href = 'enConstruccion.html';
+        }
         });
 
         // Opción: Preguntas pendientes
         const opcionPreguntasPendientes = document.createElement('li');
         opcionPreguntasPendientes.textContent = 'Preguntas pendientes';
         opcionPreguntasPendientes.addEventListener('click', () => {
+        const rutaActual = window.location.pathname;
+        
+        // Si estás en una subcarpeta como /usuario/
+        if (rutaActual.includes('/usuario/')) {
+          window.location.href = '../enConstruccion.html';
+        } else {
           window.location.href = 'enConstruccion.html';
+        }
         });
 
         // Opción: Cerrar sesión
@@ -81,7 +96,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const opcionMisPreguntasEmp = document.createElement('li');
         opcionMisPreguntasEmp.textContent = 'Mis preguntas';
         opcionMisPreguntasEmp.addEventListener('click', () => {
+        const rutaActual = window.location.pathname;
+        
+        // Si estás en una subcarpeta como /usuario/
+        if (rutaActual.includes('/usuario/')) {
+          window.location.href = '../enConstruccion.html';
+        } else {
           window.location.href = 'enConstruccion.html';
+        }
         });
 
         // Opción: Cerrar sesión

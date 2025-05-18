@@ -6,21 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="../css/estilos.css" />
+        <link rel="stylesheet" href="../css/noticia.css" />
+
 </head>
 
 <body>
 
-        <script>
-    // Redirigir al login si no hay un usuario logueado
-    document.addEventListener('DOMContentLoaded', () => {
-        const usuarioLogueado = sessionStorage.getItem('usuarioLogueado');
-        
-        if (!usuarioLogueado) {
-        // Nadie está logueado, redirigimos al login
-        window.location.href = '../login.html';
-        }
-    });
-    </script>
 
     <!-- Encabezado (Header) -->
     <header>
@@ -97,6 +88,11 @@
 
     <script src="../js/main.js"></script>
     <!-- <script src="../js/usuario-menu.js"></script> -->
+
+        <!-- Script para validar usuario login -->
+  <script src="../js/verificarLoginUsuario.js"></script>
+
+
 </body>
 
 </html>
