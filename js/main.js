@@ -102,9 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Opción: perfil
      const opcionPerfilVec = document.createElement('li');
-      opcionPerfil.textContent = 'Mi perfil';
-      opcionPerfil.addEventListener('click', () => {
-        window.location.href = '/usuario/perfil.html';
+      opcionPerfilVec.textContent = 'Mi perfil';
+      opcionPerfilVec.addEventListener('click', () => {
+        window.location.href = 'usuario/perfil.html';
       });
 
         // Opción: Mis preguntas
@@ -300,8 +300,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const logoTarjeta = document.getElementById('logo-tarjeta');
   if (logoTarjeta) {
     logoTarjeta.addEventListener('click', () => {
-      window.location.href = 'index.html';
+      // Obtener la ruta actual
+      const rutaActual = window.location.pathname;
+
+      // Si estás en una subcarpeta (como /usuario/)
+      if (rutaActual.includes('/usuario/')) {
+        window.location.href = '../index.html';
+      } else {
+        // Estás en la raíz o en otra carpeta
+        window.location.href = 'index.html';
+      }
     });
   }
 });
+
 

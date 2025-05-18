@@ -27,12 +27,17 @@ header {
     /* Para que en pantallas chicas se acomode */
 }
 
+
 /* Espacio del logo (vacío por ahora) */
 .logo {
     flex: 1 1 150px;
     /* flexible pero con mínimo 150px */
 }
 
+#logo {
+  max-width: 100px;
+  height: auto;
+}
 
 /* Espacio para publicidad */
 .publicidad {
