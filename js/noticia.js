@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const params = new URLSearchParams(window.location.search);
     const idNoticia = parseInt(params.get('id'), 10);
 
-    fetch('datos/noticias.json')
+    fetch('https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/datos/noticias.json')
         .then(response => response.json())
         .then(noticias => {
             const noticia = noticias.find(n => n.id === idNoticia && n.estado === 'publica');

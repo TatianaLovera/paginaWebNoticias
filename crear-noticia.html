@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Noticias - Malvinas Argentinas</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="stylesheet" href="css/crear-noticia.css" />
+
+</head>
+
+<body>
+  <!-- Encabezado (Header) con logo, publicidad y login -->
+  <header>
+    <div id="logo-tarjeta" class="logo-tarjeta">
+      <img id="logo"
+        src="https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/logoMuni.jpg"
+        alt="Logo Municipalidad">
+    </div>
+
+    <div class="publicidad">
+      <!-- Espacio para publicidad o banners -->
+      <p>Publicidad aquí</p>
+    </div>
+
+    <div class="login">
+      <!-- Botón para iniciar sesión -->
+      <button id="loginBtn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+    </div>
+  </header>
+
+  <main class="contenedor-formulario">
+    <!-- Título de la sección -->
+    <h1>Crear Nueva Noticia</h1>
+
+    <!-- Formulario para crear la noticia -->
+    <form id="formNoticia" class="formulario">
+
+      <!-- Campo para el título -->
+      <label for="titulo">Título* (máximo 20 caracteres):</label>
+      <input type="text" id="titulo" name="titulo" maxlength="20" required />
+
+      <!-- Campo para el resumen -->
+      <label for="resumen">Resumen* (máximo 100 caracteres):</label>
+      <textarea id="resumen" name="resumen" maxlength="100" rows="2" required></textarea>
+
+      <!-- Campo para el contenido -->
+      <label for="contenido">Contenido* (máximo 3000 caracteres):</label>
+      <textarea id="contenido" name="contenido" maxlength="3000" rows="10" required></textarea>
+
+      <!-- Carga de imagen desde la computadora -->
+      <label for="imagen">Imagen relacionada:</label>
+      <input type="file" id="imagen" name="imagen" accept="image/*" />
+
+      <!-- Desplegable para seleccionar categoría -->
+      <label for="categoria">Categoría*:</label>
+      <select id="categoria" name="categoria" required>
+        <option value="">Seleccione una categoría</option>
+        <option value="salud">Salud</option>
+        <option value="medio ambiente">Medio Ambiente</option>
+        <option value="interes general">Interés General</option>
+        <option value="cultura">Cultura</option>
+        <option value="infraestructura">Infraestructura</option>
+      </select>
+
+      <!-- Campo de dirección y botón para buscar -->
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" name="direccion" placeholder="Ej: Calle Falsa 123, Municipio"
+        oninput="eliminarDirecciones()" required />
+      <button type="button" onclick="normalizarDireccion()">Buscar dirección</button>
+
+      <!-- Aviso de formato incorrecto o incompleto -->
+      <p id="avisoDatosIncompletos" class="aviso" style="display:none; color: red;"></p>
+
+      <!-- Resultados sugeridos por la API de normalización -->
+      <div id="resultadosDireccion" class="resultados-direccion"></div>
+
+      <!-- Botones del formulario -->
+      <div class="botones-formulario">
+        <button type="button" id="crearNoticia">Crear noticia</button>
+        <button type="button" id="cancelarRegistro">Cancelar</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Pie de página (Footer) -->
+  <footer>
+    <ul>
+      <li><a href="#">Trabajá con nosotros</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Dirección del Palacio Municipal</a></li>
+    </ul>
+    <p>&copy; 2025 Municipio de Malvinas Argentinas</p>
+  </footer>
+
+  <!-- Script para buscar y seleccionar dirección -->
+  <script src="js/normalizarDireccion.js"></script>
+
+  <!-- Script con lógica del formulario -->
+  <script src="js/crearNoticia.js"></script>
+
+  <!-- Script comportamiento del menu del usuario -->
+  <script src="js/main.js"></script>
+
+
+</body>
+
+</html>

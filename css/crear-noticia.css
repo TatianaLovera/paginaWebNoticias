@@ -1,0 +1,128 @@
+/* === Formulario principal === */
+.contenedor-formulario {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff; /* Blanco de fondo */
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+.contenedor-formulario h1 {
+  text-align: center;
+  color: #1565c0; /* Azul institucional */
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+/* Etiquetas */
+.formulario label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #1b5e20; /* Verde institucional */
+}
+
+/* Campos de entrada */
+.formulario input[type="text"],
+.formulario textarea,
+.formulario select,
+.formulario input[type="file"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: #ffffff;
+}
+
+/* Botones del formulario */
+.formulario button {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #1b5e20; /* Verde principal */
+  color: #ffffff;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.formulario button:hover {
+  background-color: #2e7d32;
+}
+
+/* Contenedor de botones */
+.botones-formulario {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Lista de resultados de dirección */
+.resultados-direccion ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.resultados-direccion li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.resultados-direccion li:last-child {
+  border-bottom: none;
+}
+
+.resultados-direccion li:hover {
+  background-color: #e3f2fd; /* Azul claro para hover */
+}
+
+/* === Mensajes de notificación en el formulario === */
+#mensajeNoticia {
+  max-width: 800px;
+  margin: 1rem auto; /* Separación del contenido arriba y abajo */
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+  /* Oculto por defecto, se mostrará con JS cambiando display */
+  display: none;
+}
+
+/* Mensaje de error: fondo rojo claro con texto rojo oscuro */
+.mensaje-error {
+  background-color: #f8d7da; /* rojo muy claro */
+  color: #721c24; /* rojo oscuro */
+  border: 2px solid #f5c6cb;
+}
+
+/* Mensaje de éxito: fondo verde claro con texto verde oscuro */
+.mensaje-exito {
+  background-color: #d4edda; /* verde muy claro */
+  color: #155724; /* verde oscuro */
+  border: 2px solid #c3e6cb;
+}
+
+/* Adaptación mobile: tamaño de fuente más pequeño y padding ajustado */
+@media (max-width: 480px) {
+  #mensajeNoticia {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+}
