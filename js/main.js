@@ -263,9 +263,7 @@ window.addEventListener('click', (event) => {
   }
 });
 
-// === Lista de noticias original (debería estar definida globalmente) ===
-// Asegurate de tener algo como esto cargado en tu archivo:
-let listaNoticias = []; // Este array debe estar definido previamente con tus noticias
+
 
 // === Función que filtra y muestra las noticias en base a los criterios ===
 function aplicarFiltros() {
@@ -273,7 +271,7 @@ function aplicarFiltros() {
   const fecha = inputFecha.value;
   const categoria = inputCategoria.value;
 
-  const noticiasFiltradas = listaNoticias.filter(noticia => {
+  const noticiasFiltradas = todasLasNoticias.filter(noticia => {
     const coincideTexto =
       noticia.titulo.toLowerCase().includes(texto) ||
       noticia.resumen.toLowerCase().includes(texto) ||
@@ -302,37 +300,41 @@ inputTexto.addEventListener('input', () => {
   aplicarFiltros();
 });
 
-
-// Mostrar noticias en la cuadrícula principal
 function mostrarNoticias(noticias) {
-  const contenedor = document.querySelector('.grid-noticias');
-  contenedor.innerHTML = '';
+  const contenedor = document.getElementById('contenedorNoticias');
+  if (!contenedor) {
+    console.warn('No se encontró el contenedor de noticias con id "contenedorNoticias".');
+    return;
+  }
+
+  contenedor.innerHTML = ''; // Limpiar noticias previas
+
+  if (noticias.length === 0) {
+    contenedor.innerHTML = '<p>No hay noticias disponibles.</p>';
+    return;
+  }
 
   noticias.forEach(noticia => {
     const tarjeta = document.createElement('div');
-    tarjeta.classList.add('noticia');
+    tarjeta.classList.add('tarjeta-noticia');
 
-    const imagen = document.createElement('img');
-    const rutaPrincipal = (noticia.imagen && noticia.imagen.trim() !== '') ? noticia.imagen : 'https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/logoMuni.jpg';
-    imagen.src = rutaPrincipal;
-    imagen.alt = `Imagen de ${noticia.titulo}`;
-    imagen.classList.add('imagen-noticia');
-    // En caso de error en la carga de imagen, se reemplaza por imagen de error
-    imagen.onerror = () => imagen.src = 'imagenes/imagenEnCasoDeError.jpg';
+    tarjeta.innerHTML = `
+      <div class="imagen-noticia">
+        ${noticia.imagen ? `<img src="${noticia.imagen}" alt="Imagen de la noticia">` : ''}
+      </div>
+      <div class="contenido-noticia">
+        <h3>${noticia.titulo}</h3>
+        <p class="categoria">${noticia.categoria}</p>
+        <p class="resumen">${noticia.resumen}</p>
+        <p class="fecha">${noticia.fecha}</p>
+      </div>
+    `;
 
-    const titulo = document.createElement('h3');
-    titulo.textContent = noticia.titulo;
-
-    const resumen = document.createElement('p');
-    resumen.textContent = noticia.resumen;
-
-    tarjeta.appendChild(imagen);
-    tarjeta.appendChild(titulo);
-    tarjeta.appendChild(resumen);
-
-    // Al hacer clic en la tarjeta se abre la noticia específica
+    // Redirección al hacer clic en la tarjeta
     tarjeta.addEventListener('click', () => {
-      window.location.href = `noticia.html?id=${noticia.id}`;
+      // Guardar la noticia seleccionada en sessionStorage
+      sessionStorage.setItem('noticiaSeleccionada', JSON.stringify(noticia));
+      window.location.href = 'detalle-noticia.html'; // Página de detalle
     });
 
     contenedor.appendChild(tarjeta);
