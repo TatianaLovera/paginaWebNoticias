@@ -78,7 +78,15 @@ main h2 {
     /* Responsive */
     gap: 20px;
     margin: 20px 0 60px 0;
+
 }
+
+.noticia {
+  max-width: 300px; /* ancho máximo de cada tarjeta */
+  width: 80%; /* para que respete max-width */
+  /* resto de estilos */
+}
+
 
 /*acomoda la imagen de la noticia*/
 .imagen-noticia {
@@ -91,7 +99,7 @@ main h2 {
 /* Cada noticia con borde y fondo blanco */
 .noticia {
     background-color: #ffffff;
-    border: 2px solid #2ca02c;
+    border: 2px solid #1b10bd;
     /* borde verde */
     border-radius: 10px;
     padding: 20px;
