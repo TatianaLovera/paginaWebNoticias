@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
       sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
 
       // 6. Redirigir al index luego del login exitoso
-      window.location.href = 'index.html';
+      window.location.href = '../index.html';
     } else {
       // 7. Mostrar mensaje de error si los datos no coinciden
       alert('Usuario o contraseña incorrectos.');

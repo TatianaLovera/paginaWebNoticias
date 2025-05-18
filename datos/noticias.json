@@ -8,7 +8,8 @@
     "imagen": "imagenes/noticia1.jpg",
     "autor": "Municipalidad",
     "categoria": "Medio Ambiente",
-    "direccion": "Juan María Gutiérrez 1150, Los Polvorines, Provincia de Buenos Aires",
+    "coord-x": -58.7288215744898,
+    "coord-y": -34.4840276591837,
     "estado": "publica"
   },
   {
@@ -20,6 +21,8 @@
     "imagen": "",
     "autor": "Salud Pública",
     "categoria": "Salud",
+    "coord-x": -58.6943107387755,
+    "coord-y":-34.5014442551021,
     "estado": "publica"
   },
   {
@@ -31,6 +34,8 @@
     "imagen": "",
     "autor": "empleado municipal 1",
     "categoria": "Servicios",
+    "coord-x": 0,
+    "coord-y":0,
     "estado": "publica"
   },
   {
@@ -42,6 +47,8 @@
     "imagen": "",
     "autor": "Municipalidad",
     "categoria": "ecologia",
+    "coord-x": 0,
+    "coord-y":0,
     "estado": "publica"
   },
   {
@@ -53,6 +60,8 @@
     "imagen": "",
     "autor": "empleado municipal 2",
     "categoria": "salud" ,
+    "coord-x": 0,
+    "coord-y":0,
     "estado": "publica"
   },
   {
@@ -64,6 +73,8 @@
     "imagen": "imagenes/transporte.jpg",
     "autor": "Transporte Municipal",
     "categoria": "Servicios",
+    "coord-x": 0,
+    "coord-y":0,
     "estado": "publica"
   },
   {
@@ -75,6 +86,8 @@
     "imagen": "",
     "autor": "Municipalidad",
     "categoria": "Medio Ambiente",
+    "coord-x": 0,
+    "coord-y":0,
     "estado": "pendiente"
   },
   {
@@ -86,6 +99,8 @@
     "imagen": "imagenes/vacunacion.jpg",
     "autor": "Salud Pública",
     "categoria": "Salud",
+    "coord-x": 0,
+    "coord-y":0,
     "estado": "pendiente"
   }
 ]

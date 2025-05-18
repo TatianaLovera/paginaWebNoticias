@@ -34,16 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
-/*
-document.addEventListener('DOMContentLoaded', () => {
-  const logo = document.getElementById('logo');
-  if (logo) {
-    logo.addEventListener('click', () => {
-      window.location.href = 'index.html';
-    });
-  }
-});
-*/
 document.addEventListener('DOMContentLoaded', () => {
     const logoTarjeta = document.getElementById('logo-tarjeta');
     if (logoTarjeta) {
