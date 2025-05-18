@@ -1,117 +1,103 @@
 // noticia.js
-document.addEventListener('DOMContentLoaded', function () {
-    const params = new URLSearchParams(window.location.search);
-    const idNoticia = parseInt(params.get('id'), 10);
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Obtener parámetros de la URL (por ejemplo ?id=1)
+  const params = new URLSearchParams(window.location.search);
+  const idNoticia = params.get('id');
+
+  console.log("ID noticia:", idNoticia);
+
+  if (idNoticia) {
     fetch('https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/datos/noticias.json')
-        .then(response => response.json())
-        .then(noticias => {
-            const noticia = noticias.find(n => n.id === idNoticia && n.estado === 'publica');
-            if (noticia) {
-                document.getElementById('tituloNoticia').textContent = noticia.titulo;
-                document.getElementById('fechaNoticia').textContent = `Fecha: ${noticia.fecha}`;
-                document.getElementById('contenidoNoticia').textContent = noticia.contenido;
-                document.getElementById('autorNoticia').textContent = noticia.autor;
-                document.getElementById('categoriaNoticia').textContent = noticia.categoria;
+      .then(response => response.json())
+      .then(data => {
+        const noticia = data.find(n => n.id === parseInt(idNoticia));
+        console.log("Noticia encontrada:", noticia);
 
-                const imagen = document.getElementById('imagenNoticia');
-                imagen.src = noticia.imagen && noticia.imagen.trim() !== ''
-                    ? noticia.imagen
-                    : 'imagenes/logoMuni.jpg';
-                imagen.onerror = () => imagen.src = 'imagenes/imagenEnCasoDeError.jpg';
+        if (noticia) {
+          // Cargar datos en la página
+          document.getElementById('tituloNoticia').textContent = noticia.titulo;
+          document.getElementById('categoriaNoticia').textContent = noticia.categoria;
+          document.getElementById('resumenNoticia').textContent = noticia.resumen;
+          document.getElementById('contenidoNoticia').textContent = noticia.contenido;
 
-                if (noticia.direccion) {
-                    const direccionContainer = document.getElementById('direccionNoticia');
-                    direccionContainer.style.display = 'block';
-                    direccionContainer.querySelector('span').textContent = noticia.direccion;
-                }
-            } else {
-                document.querySelector('main').innerHTML = "<p>No se encontró la noticia.</p>";
-            }
-        })
-        .catch(error => {
-            console.error('Error al cargar la noticia:', error);
-        });
-});
+          if (noticia.imagen && noticia.imagen.trim() !== "") {
+            const img = document.getElementById('imagenNoticia');
+            img.src = noticia.imagen;
+            img.style.display = 'block';
+          }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const logoTarjeta = document.getElementById('logo-tarjeta');
-    if (logoTarjeta) {
-        logoTarjeta.addEventListener('click', () => {
-            window.location.href = 'index.html'; // o '/index.html' si estás usando servidor
-        });
-    }
-});
+          const x = parseFloat(noticia["coord-x"]);
+          const y = parseFloat(noticia["coord-y"]);
 
-document.addEventListener('DOMContentLoaded', function () {
-    const loginBtn = document.getElementById('loginBtn');
+          console.log("Coordenadas x, y:", x, y);
 
-    // Verificar si hay un usuario logueado
-    const usuarioGuardado = localStorage.getItem('usuarioLogueado');
-    if (usuarioGuardado) {
-        const usuario = JSON.parse(usuarioGuardado);
-        const nombreUsuario = usuario.usuario;
+          const coordenadasValidas = (
+            !isNaN(x) && !isNaN(y) &&
+            x !== 0 && y !== 0 &&
+            x !== "" && y !== ""
+          );
 
-        // Ocultar botón de login
-        if (loginBtn) {
-            loginBtn.style.display = 'none';
+          if (coordenadasValidas) {
+            const mapaDiv = document.getElementById('map');
+            mapaDiv.style.display = 'block';
+
+            const mapa = L.map('map').setView([y, x], 15);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(mapa);
+
+            L.marker([y, x]).addTo(mapa)
+              .bindPopup('Ubicación de la noticia')
+              .openPopup();
+          } else {
+            console.log("No hay coordenadas válidas para mostrar mapa.");
+          }
+        } else {
+          alert('Noticia no encontrada.');
         }
+      })
+      .catch(error => {
+        console.error('Error al obtener la noticia:', error);
+      });
+  } else {
+    alert('No se especificó una noticia.');
+  }
 
-        // Crear nuevo botón con el nombre del usuario
-        const loginDiv = document.querySelector('.login');
-        const usuarioBtn = document.createElement('button');
-        usuarioBtn.textContent = nombreUsuario;
-        usuarioBtn.classList.add('btn-usuario');
+  // --- Manejo login para mostrar formulario o mensaje ---
 
-        // Agregar funcionalidad al botón (puede ser mostrar perfil o cerrar sesión)
-        usuarioBtn.addEventListener('click', function () {
-            const cerrar = confirm('¿Querés cerrar sesión?');
-            if (cerrar) {
-                localStorage.removeItem('usuarioLogueado');
-                location.reload(); // Refrescar para mostrar el botón original
-            }
-        });
+  // Recupera el usuario logueado desde sessionStorage (puede ser null si no está logueado)
+  const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuarioLogueado'));
 
-        loginDiv.appendChild(usuarioBtn);
+  if (usuarioLogueado) {
+    // Usuario logueado: mostrar el formulario para dejar preguntas/comentarios
+    document.getElementById('formComentario').style.display = 'block';
+    document.getElementById('mensajeLogin').style.display = 'none';
+  } else {
+    // Usuario no logueado: mostrar mensaje para invitar a iniciar sesión
+    document.getElementById('formComentario').style.display = 'none';
+    document.getElementById('mensajeLogin').style.display = 'block';
+  }
+
+  // --- Manejo del envío de preguntas ---
+
+  document.getElementById('enviarComentario').addEventListener('click', (event) => {
+    event.preventDefault(); // Evita que el formulario recargue la página (si fuera un <form>)
+
+    const texto = document.getElementById('comentarioTexto').value.trim();
+
+    if (texto !== '') {
+      // Mostrar alerta que confirma el envío
+      alert("Pregunta enviada al administrador. Quedará pendiente de respuesta.");
+
+      // Limpiar el textarea para poder hacer otra pregunta
+      document.getElementById('comentarioTexto').value = '';
+
+      // Asegurar que el formulario siga visible y el mensaje de login oculto
+      document.getElementById('formComentario').style.display = 'block';
+      document.getElementById('mensajeLogin').style.display = 'none';
     } else {
-        // Redirección si el usuario no está logueado y toca login
-        loginBtn.addEventListener('click', function () {
-            window.location.href = 'login.html';
-        });
+      alert("Por favor, escribí tu pregunta antes de enviarla.");
     }
-
-    // Lógica para mostrar u ocultar el área de comentarios
-    const usuarioLogueado = localStorage.getItem('usuarioLogueado');
-    const mensajeLogin = document.getElementById('mensajeLogin');
-    const formComentario = document.getElementById('formComentario');
-    const confirmacionComentario = document.getElementById('confirmacionComentario');
-
-    if (usuarioLogueado) {
-        // Mostrar el formulario de comentarios
-        mensajeLogin.style.display = 'none';
-        formComentario.style.display = 'block';
-
-        // Capturar envío del comentario
-        const btnEnviar = document.getElementById('enviarComentario');
-        btnEnviar.addEventListener('click', () => {
-            const texto = document.getElementById('comentarioTexto').value.trim();
-
-            if (texto !== '') {
-                // Mostrar mensaje de publicación en revisión
-                confirmacionComentario.style.display = 'block';
-                document.getElementById('comentarioTexto').value = '';
-
-                // Ocultar el mensaje después de 2 segundos sin animación
-                setTimeout(() => {
-                    confirmacionComentario.style.display = 'none';
-                }, 2000);
-
-            }
-        });
-
-    } else {
-        // Usuario no logueado
-        mensajeLogin.style.display = 'block';
-        formComentario.style.display = 'none';
-    }
+  });
 });

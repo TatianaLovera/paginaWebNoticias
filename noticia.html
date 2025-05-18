@@ -1,43 +1,49 @@
-<!-- noticia.html -->
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Detalle de Noticia</title>
   <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="stylesheet" href="css/noticia.css" />
+  <!-- Leaflet CSS para el mapa -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
-
 <body>
   <header>
-
     <div id="logo-tarjeta" class="logo-tarjeta">
-      <img id="logo" 
-      src="https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/logoMuni.jpg" 
-      alt="Logo Municipalidad">
+      <img id="logo" src="https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/logoMuni.jpg" alt="Logo Municipalidad">
     </div>
-    
     <div class="publicidad">
       <p>Publicidad aquí</p>
     </div>
     <div class="login">
-      <button id="loginBtn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+      <button id="loginBtn">Iniciar Sesión</button>
     </div>
   </header>
 
   <main class="container">
     <article class="detalle-noticia">
+      <!-- Título de la noticia -->
       <h1 id="tituloNoticia"></h1>
-      <p id="fechaNoticia" class="fecha"></p>
-      <img id="imagenNoticia" class="imagen-detalle" src="" alt="Imagen de la noticia">
-      <p id="contenidoNoticia"></p>
-      <p><strong>Autor:</strong> <span id="autorNoticia"></span></p>
-      <p><strong>Categoría:</strong> <span id="categoriaNoticia"></span></p>
-      <p id="direccionNoticia" style="display:none;"><strong>Dirección:</strong> <span></span></p>
+
+      <!-- Imagen de la noticia (se mostrará solo si está disponible) -->
+      <img id="imagenNoticia" class="imagen-detalle" src="" alt="Imagen de la noticia" style="display: none;" />
+
+      <!-- Categoría de la noticia -->
+      <p id="categoriaNoticia" class="categoria"></p>
+
+      <!-- Resumen de la noticia -->
+      <p id="resumenNoticia" class="resumen"></p>
+
+      <!-- Contenido completo de la noticia -->
+      <p id="contenidoNoticia" class="contenido"></p>
+
+      <!-- Mapa de ubicación (se mostrará solo si hay dirección) -->
+      <div id="map" style="height: 300px; width: 100%; display: none; margin-top: 20px;"></div>
     </article>
 
-    <!--Seccion de comentarios-->
+    <!-- Sección de comentarios -->
     <section class="comentarios">
       <h2>Preguntas sobre esta noticia</h2>
       <div id="mensajeLogin" class="mensaje-info" style="display:none;">
@@ -53,11 +59,7 @@
         <p>✅ Publicación en revisión.</p>
       </div>
     </section>
-
   </main>
-
-
-
   <footer>
     <ul>
       <li><a href="#">Trabajá con nosotros</a></li>
@@ -67,7 +69,11 @@
     <p>&copy; 2025 Municipio de Malvinas Argentinas</p>
   </footer>
 
+  <!-- Leaflet JS para el mapa -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Script personalizado para manejar la lógica de la noticia -->
   <script src="js/noticia.js"></script>
+  <!-- Script para el funcionamiento de la parte del boton de inciiar sesion y logo -->
+  <script src="js/main.js"></script>
 </body>
-
 </html>
