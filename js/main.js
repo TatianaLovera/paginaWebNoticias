@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const opcionPreguntasPendientes = document.createElement('li');
         opcionPreguntasPendientes.textContent = 'Preguntas pendientes';
         opcionPreguntasPendientes.addEventListener('click', () => {
-          window.location.href = 'admin/preguntas-pendientes.html';
+          window.location.href = 'enConstruccion.html';
         });
 
         // Opción: Cerrar sesión
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const opcionMisPreguntasEmp = document.createElement('li');
         opcionMisPreguntasEmp.textContent = 'Mis preguntas';
         opcionMisPreguntasEmp.addEventListener('click', () => {
-          window.location.href = 'mis-preguntas.html';
+          window.location.href = 'enConstruccion.html';
         });
 
         // Opción: Cerrar sesión
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const opcionMisPreguntasVec = document.createElement('li');
         opcionMisPreguntasVec.textContent = 'Mis preguntas';
         opcionMisPreguntasVec.addEventListener('click', () => {
-          window.location.href = 'mis-preguntas.html';
+          window.location.href = 'enConstruccion.html';
         });
 
         // Opción: Cerrar sesión
@@ -260,7 +260,7 @@ function mostrarNoticias(noticias) {
     tarjeta.classList.add('noticia');
 
     const imagen = document.createElement('img');
-    const rutaPrincipal = (noticia.imagen && noticia.imagen.trim() !== '') ? noticia.imagen : 'imagenes/logoMuni.jpg';
+    const rutaPrincipal = (noticia.imagen && noticia.imagen.trim() !== '') ? noticia.imagen : 'https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/logoMuni.jpg';
     imagen.src = rutaPrincipal;
     imagen.alt = `Imagen de ${noticia.titulo}`;
     imagen.classList.add('imagen-noticia');

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const opcionPreguntas = document.createElement('li');
       opcionPreguntas.textContent = 'Preguntas pendientes';
       opcionPreguntas.addEventListener('click', () => {
-        window.location.href = 'admin/preguntas-pendientes.html';
+        window.location.href = '/enConstruccion.html';
       });
   
       menu.appendChild(opcionNoticias);
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     opcionCerrarSesion.textContent = 'Cerrar sesión';
     opcionCerrarSesion.addEventListener('click', () => {
       localStorage.removeItem('usuarioLogueado');
-      location.href = '../index.html';
+      window.location.href = 'index.html';
     });
   
     menu.appendChild(opcionCerrarSesion);
