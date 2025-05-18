@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="../css/estilos.css" />
+</head>
+
+<body>
+    <!-- Encabezado (Header) -->
+    <header>
+        <div id="logo-tarjeta" class="logo-tarjeta">
+            <img id="logo" src="../imagenes/logoMuni.jpg" alt="Logo Municipalidad">
+        </div>
+
+        <div class="publicidad">
+            <p>Publicidad aquí</p>
+        </div>
+
+        <div class="login">
+            <button id="loginBtn" onclick="window.location.href='../login.html'">Iniciar Sesión</button>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <h1>Perfil de Usuario</h1>
+        <p>Bienvenido a tu perfil. Aquí podrás gestionar tu información personal y preferencias.</p>
+        <!-- Contenido adicional del perfil -->
+
+        <section class="perfil-opciones">
+            <div class="opciones-container">
+                <h2>Opciones de Perfil</h2>
+                <form action="#" method="POST">
+                    <!-- Nombre completo -->
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre"/>
+        
+                    <!-- Nombre de usuario -->
+                    <label for="usuario">Nombre de usuario:</label>
+                    <input type="text" id="usuario" name="usuario"/>
+        
+                    <!-- DNI -->
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni" />
+        
+                    <!-- Correo electrónico -->
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="text" id="correo" name="correo"/>
+        
+                    <!-- Nueva contraseña -->
+                    <label for="clave">Nueva contraseña:</label>
+                    <input type="password" id="clave" name="clave" placeholder="Nueva contraseña" />
+
+                    <!-- Confirmar contraseña -->
+                    <label for="confirmar-clave">Confirmar nueva contraseña:</label>
+                    <input type="password" id="confirmar-clave" name="confirmar-clave" placeholder="Confirmar nueva contraseña" />
+                    
+                    <!-- Checkbox newsletter -->
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked />
+                        <label for="newsletter">Deseo recibir el boletín semanal de noticias</label>
+                    </div>
+        
+                    <!-- Botón -->
+                    <button type="submit" class="btn-guardar">Guardar Cambios</button>
+                </form>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Pie de página (Footer) -->
+    <footer>
+        <ul>
+            <li><a href="#">Trabajá con nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Dirección del Palacio Municipal</a></li>
+        </ul>
+        <p>&copy; 2025 Municipio de Malvinas Argentinas</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/usuario-menu.js"></script>
+</body>
+
+</html>

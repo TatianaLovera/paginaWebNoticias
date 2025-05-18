@@ -180,18 +180,75 @@ document.addEventListener('DOMContentLoaded', function () {
   cargarNoticiasPublicas();
 });
 
+//Para el filtro de fecha y categoria
+let todasLasNoticias = [];
+
+
 // Cargar y mostrar solo noticias públicas desde GitHub
 function cargarNoticiasPublicas() {
   fetch('https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/datos/noticias.json')
     .then(response => response.json())
     .then(data => {
       const noticiasPublicas = data.filter(noticia => noticia.estado === 'publica');
+      todasLasNoticias = noticiasPublicas;
       mostrarNoticias(noticiasPublicas);
+      configurarBusqueda();      // << Activar lógica de búsqueda
+      configurarFiltro();        // << Activar lógica del filtro
     })
     .catch(error => {
       console.error('Error al cargar las noticias desde GitHub:', error);
     });
 }
+
+function configurarBusqueda() {
+  const btnBuscar = document.getElementById('btn-buscar');
+  const campoBusqueda = document.getElementById('campo-busqueda');
+
+  if (!btnBuscar || !campoBusqueda) return;
+
+  btnBuscar.addEventListener('click', () => {
+    campoBusqueda.style.display = campoBusqueda.style.display === 'none' ? 'block' : 'none';
+    campoBusqueda.focus();
+  });
+
+  campoBusqueda.addEventListener('input', () => {
+    const query = campoBusqueda.value.toLowerCase();
+    const tarjetas = document.querySelectorAll('.noticia');
+
+    tarjetas.forEach(tarjeta => {
+      const titulo = tarjeta.querySelector('h3').textContent.toLowerCase();
+      const descripcion = tarjeta.querySelector('p').textContent.toLowerCase();
+
+      if (titulo.includes(query) || descripcion.includes(query)) {
+        tarjeta.style.display = 'block';
+      } else {
+        tarjeta.style.display = 'none';
+      }
+    });
+  });
+}
+
+function configurarFiltro() {
+  const filtroFecha = document.getElementById('filtro-fecha');
+  const filtroCategoria = document.getElementById('filtro-categoria');
+  const btnAplicarFiltros = document.getElementById('btn-aplicar-filtros');
+
+  if (!btnAplicarFiltros) return;
+
+  btnAplicarFiltros.addEventListener('click', () => {
+    const fechaSeleccionada = filtroFecha.value;
+    const categoriaSeleccionada = filtroCategoria.value.toLowerCase();
+
+    const filtradas = todasLasNoticias.filter(noticia => {
+      const coincideFecha = !fechaSeleccionada || noticia.fecha === fechaSeleccionada;
+      const coincideCategoria = !categoriaSeleccionada || noticia.categoria.toLowerCase() === categoriaSeleccionada;
+      return coincideFecha && coincideCategoria;
+    });
+
+    mostrarNoticias(filtradas);
+  });
+}
+
 
 // Mostrar noticias en la cuadrícula principal
 function mostrarNoticias(noticias) {
