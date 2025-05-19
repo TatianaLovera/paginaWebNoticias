@@ -231,8 +231,7 @@ function cargarNoticiasPublicas() {
       const noticiasPublicas = data.filter(noticia => noticia.estado === 'publica');
       todasLasNoticias = noticiasPublicas;
       mostrarNoticias(noticiasPublicas);
-      configurarBusqueda();      // << Activar lógica de búsqueda
-      configurarFiltro();        // << Activar lógica del filtro
+      aplicarFiltros();
     })
     .catch(error => {
       console.error('Error al cargar las noticias desde GitHub:', error);
@@ -269,7 +268,7 @@ window.addEventListener('click', (event) => {
 function aplicarFiltros() {
   const texto = inputTexto.value.trim().toLowerCase();
   const fecha = inputFecha.value;
-  const categoria = inputCategoria.value;
+  const categoria = inputCategoria.value.toLowerCase();
 
   const noticiasFiltradas = todasLasNoticias.filter(noticia => {
     const coincideTexto =
@@ -278,9 +277,9 @@ function aplicarFiltros() {
       texto === '';
 
     const coincideFecha = fecha === '' || noticia.fecha === fecha;
-    const coincideCategoria = categoria === '' || noticia.categoria === categoria;
+    const coincideCategoria = categoria === '' || noticia.categoria.toLowerCase() === categoria;
 
-    return coincideTexto || coincideFecha || coincideCategoria;
+    return coincideTexto && coincideFecha && coincideCategoria;
   });
 
   // Reemplazar noticias en pantalla con las filtradas
@@ -301,44 +300,45 @@ inputTexto.addEventListener('input', () => {
 });
 
 function mostrarNoticias(noticias) {
-  const contenedor = document.getElementById('contenedorNoticias');
-  if (!contenedor) {
-    console.warn('No se encontró el contenedor de noticias con id "contenedorNoticias".');
-    return;
-  }
-
-  contenedor.innerHTML = ''; // Limpiar noticias previas
+  const contenedor = document.querySelector('.grid-noticias');
+  contenedor.innerHTML = '';
 
   if (noticias.length === 0) {
     contenedor.innerHTML = '<p>No hay noticias disponibles.</p>';
     return;
   }
 
+
   noticias.forEach(noticia => {
     const tarjeta = document.createElement('div');
-    tarjeta.classList.add('tarjeta-noticia');
+    tarjeta.classList.add('noticia');
 
-    tarjeta.innerHTML = `
-      <div class="imagen-noticia">
-        ${noticia.imagen ? `<img src="${noticia.imagen}" alt="Imagen de la noticia">` : ''}
-      </div>
-      <div class="contenido-noticia">
-        <h3>${noticia.titulo}</h3>
-        <p class="categoria">${noticia.categoria}</p>
-        <p class="resumen">${noticia.resumen}</p>
-        <p class="fecha">${noticia.fecha}</p>
-      </div>
-    `;
+    const imagen = document.createElement('img');
+    const rutaPrincipal = (noticia.imagen && noticia.imagen.trim() !== '') ? noticia.imagen : 'https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/logoMuni.jpg';
+    imagen.src = rutaPrincipal;
+    imagen.alt = `Imagen de ${noticia.titulo}`;
+    imagen.classList.add('imagen-noticia');
+    // En caso de error en la carga de imagen, se reemplaza por imagen de error
+    imagen.onerror = () => imagen.src = 'https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/imagenEnCasoDeError.jpg';
 
-    // Redirección al hacer clic en la tarjeta
+    const titulo = document.createElement('h3');
+    titulo.textContent = noticia.titulo;
+
+    const resumen = document.createElement('p');
+    resumen.textContent = noticia.resumen;
+
+    tarjeta.appendChild(imagen);
+    tarjeta.appendChild(titulo);
+    tarjeta.appendChild(resumen);
+
+    // Al hacer clic en la tarjeta se abre la noticia específica
     tarjeta.addEventListener('click', () => {
-      // Guardar la noticia seleccionada en sessionStorage
-      sessionStorage.setItem('noticiaSeleccionada', JSON.stringify(noticia));
-      window.location.href = 'detalle-noticia.html'; // Página de detalle
+      window.location.href = `noticia.html?id=${noticia.id}`;
     });
 
     contenedor.appendChild(tarjeta);
   });
+
 }
 
 // Permitir que el logo redirija al inicio
