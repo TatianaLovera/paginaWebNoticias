@@ -28,7 +28,7 @@ function guardarDatos(event) {
     const usuario = JSON.parse(sessionStorage.getItem('usuario')) || { usuario: "Anónimo" };
     const autor = usuario.usuario;
 
-    // Obtenemos nuevo ID simulado (del localStorage, si no existe es 1)
+    // Obtenemos nuevo ID simulado (del sesionStorage, si no existe es 1)
     const id = obtenerNuevoId();
 
     // Fecha actual en formato ISO (yyyy-mm-dd)
@@ -49,13 +49,13 @@ function guardarDatos(event) {
         estado: estado
     };
 
-    // Simulación de guardado: llamamos a función que no hace nada
+    // Simulación de guardado: llamamos a esta función que no hace nada 8al momento)
     registrarNoticia(nuevaNoticia);
 
-    // Mostrar mensaje de éxito
+    // Muestra mensaje de éxito
     alert('¡Noticia creada exitosamente! Será revisada por un administrador.');
 
-    // Redireccionar a index.html luego de 30 segundos
+    // Redireccionar a index.html 
     window.location.href = "index.html";
 }
 
