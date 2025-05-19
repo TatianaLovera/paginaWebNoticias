@@ -84,42 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         menu.appendChild(opcionPreguntasPendientes);
         menu.appendChild(opcionCerrarSesionAdmin);
         break;
-
-      case 'empleado':
-        // Opción: Crear noticia
-        const opcionCrearNoticiaEmp = document.createElement('li');
-        opcionCrearNoticiaEmp.textContent = 'Crear noticia';
-        opcionCrearNoticiaEmp.addEventListener('click', () => {
-          window.location.href = 'crear-noticia.html';
-        });
-
-        // Opción: Mis preguntas
-        const opcionMisPreguntasEmp = document.createElement('li');
-        opcionMisPreguntasEmp.textContent = 'Mis preguntas';
-        opcionMisPreguntasEmp.addEventListener('click', () => {
-          const rutaActual = window.location.pathname;        
-        // Si estás en una subcarpeta como /usuario/
-        if (rutaActual.includes('/usuario/')) {
-          window.location.href = '../enConstruccion.html';
-        } else {
-          window.location.href = 'enConstruccion.html';
-        }
-        });
-
-        // Opción: Cerrar sesión
-        const opcionCerrarSesionEmp = document.createElement('li');
-        opcionCerrarSesionEmp.textContent = 'Cerrar sesión';
-        opcionCerrarSesionEmp.addEventListener('click', () => {
-          sessionStorage.removeItem('usuarioLogueado');
-          location.reload();
-        });
-
-        // Agregamos las opciones al menú
-        menu.appendChild(opcionCrearNoticiaEmp);
-        menu.appendChild(opcionMisPreguntasEmp);
-        menu.appendChild(opcionCerrarSesionEmp);
-        break;
-
+        
       case 'vecino':
 
       // Opción: perfil
@@ -226,15 +191,35 @@ let todasLasNoticias = [];
 // Cargar y mostrar solo noticias públicas desde GitHub
 function cargarNoticiasPublicas() {
   fetch('https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/datos/noticias.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
+      if (!Array.isArray(data)) {
+        throw new Error('El formato de datos no es un array');
+      }
+
       const noticiasPublicas = data.filter(noticia => noticia.estado === 'publica');
       todasLasNoticias = noticiasPublicas;
+
       mostrarNoticias(noticiasPublicas);
       aplicarFiltros();
     })
     .catch(error => {
       console.error('Error al cargar las noticias desde GitHub:', error);
+
+      // Mostrar mensaje en la página para que el usuario lo sepa
+      const contenedorNoticias = document.getElementById('contenedor-noticias');
+      if (contenedorNoticias) {
+        contenedorNoticias.innerHTML = `
+          <p style="color: red; text-align: center;">
+            ⚠️ No se pudieron cargar las noticias. Intente recargar la página más tarde.
+          </p>
+        `;
+      }
     });
 }
 

@@ -3,57 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>En construcción</title>
-  <style>
-    body {
-      background-color: #2d4f96; /* azul del fondo */
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-
-    img {
-      width: 150px;
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      color: #ffffff;
-      font-size: 32px;
-    }
-
-    p {
-      font-size: 20px;
-      color: #d0e6f8; /* celeste claro */
-    }
-  </style>
+  <link rel="stylesheet" href="css/estilos.css" />
 </head>
-<body>
-  <img src="https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/imagenes/logoMuni.jpg" alt="Logo del Municipio">
+<body class="pagina-construccion">
+  <img src="imagenes/logoMuni.jpg" alt="Logo del Municipio" class="logo-construccion">
   <h1>Página web en construcción</h1>
   <p>Disculpe las molestias.</p>
-</body>
-
+  
   <!-- Botón para volver al inicio -->
-<div style="text-align: center; margin: 40px 0;">
-  <a href="index.html" style="text-decoration: none;">
-    <button style="
-      padding: 12px 24px;
-      font-size: 16px;
-      background-color: #07b60f;
-      color: rgb(0, 0, 0);
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    " onmouseover="this.style.backgroundColor='#1e366d'; this.style.transform='scale(1.05)';"
-       onmouseout="this.style.backgroundColor='#07b60f'; this.style.transform='scale(1)';">
-      🏠 Volver al inicio
-    </button>
-  </a>
-</div>
-
+  <div class="contenedor-volver">
+    <a href="index.html" class="enlace-volver">
+      <button class="boton-volver-al-inicio">
+        🏠 Volver al inicio
+      </button>
+    </a>
+  </div>
+</body>
 </html>

@@ -260,20 +260,6 @@ input[type="password"] {
   transform: translateY(0);
 }
 
-/*Boton de busqueda de noticias en el menu principal*/
-.busqueda-container {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-}
-
-#campo-busqueda {
-  margin-left: 10px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 /*Boton de usuario*/
 
 .btn-usuario {
@@ -361,20 +347,6 @@ input[type="password"] {
   display: inline-block;
 }
 
-/*Filtros de fecha y tema*/
-
-.filtros-noticias {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem; /* Espacio entre filtros */
-  margin-bottom: 1rem; /* Separación con el contenido siguiente */
-}
-
-.filtros-noticias div {
-  display: flex;
-  flex-direction: column;
-}
-
 /*Opciones del perfil del usuario*/
 
 .perfil-opciones {
@@ -442,6 +414,33 @@ input[type="password"] {
   background-color: #218838;
 }
 
+/*=========== formato del formualrio para registrarse=================*/
+.registro-container {
+    max-width: 400px;
+    margin: 60px auto;
+    background-color: #eafbea;
+    color: #003366;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #0a4c91;
+}
+
+
+.btn-registrarse {
+  display: block; /* o flex si querés alinear contenido dentro */
+  width: fit-content; /* o un valor fijo si preferís */
+  margin: 20px auto; /* el auto lo centra horizontalmente */
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+/* ========================================== */
+
 
 /* ========================================== */
 /* Estilo uniforme para imágenes en tarjetas  */
@@ -458,7 +457,7 @@ input[type="password"] {
 }
 
 /* ============================= */
-/* Versión responsive para móvil */
+/* Versión responsive para celular */
 /* ============================= */
 @media (max-width: 480px) {
   .noticia img {
@@ -553,3 +552,132 @@ input[type="password"] {
   }
 }
 
+/*======================formato del boton volver al inicio========================*/
+
+/* Contenedor centrado para el botón */
+.contenedor-volver {
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* Estilo para el enlace que rodea el botón */
+.enlace-volver {
+  text-decoration: none;
+}
+
+
+.boton-volver-al-inicio {
+  background-color: #07b60f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Suaviza el cambio */
+}
+
+.boton-volver-al-inicio:hover {
+  background-color: #1b6f1b;
+  transform: scale(1.05);
+}
+
+/* Estilos responsive para pantallas pequeñas */
+@media (max-width: 600px) {
+  .boton-volver-al-inicio {
+    width: 90%;
+    font-size: 18px;
+  }
+
+  .enlace-volver {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+/*================================= fin formato del boton volver al inicio========================================*/
+
+
+/*===============estilo del html enContruccion===========================*/
+
+/* Página en construcción - fondo y tipografía */
+.pagina-construccion {
+  background-color: #2d4f96; /* azul de fondo */
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+}
+
+/* Imagen del logo */
+.logo-construccion {
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+/* Título */
+.pagina-construccion h1 {
+  color: #ffffff;
+  font-size: 32px;
+}
+
+/* Mensaje */
+.pagina-construccion p {
+  font-size: 20px;
+  color: #d0e6f8; /* celeste claro */
+}
+
+/* Contenedor centrado para el botón */
+.contenedor-volver {
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* Estilo para el enlace que rodea el botón */
+.enlace-volver {
+  text-decoration: none;
+}
+
+/* Estilo del botón */
+.boton-volver-al-inicio {
+  background-color: #07b60f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover del botón */
+.boton-volver-al-inicio:hover {
+  background-color: #1b6f1b;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .pagina-construccion {
+    padding: 30px 20px;
+  }
+
+  .logo-construccion {
+    width: 100px;
+  }
+
+  .pagina-construccion h1 {
+    font-size: 24px;
+  }
+
+  .pagina-construccion p {
+    font-size: 16px;
+  }
+
+  .boton-volver-al-inicio {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/*==============================fin estilo del html enContruccion ==========================*/

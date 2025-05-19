@@ -90,39 +90,3 @@
 .resultados-direccion li:hover {
   background-color: #e3f2fd; /* Azul claro para hover */
 }
-
-/* === Mensajes de notificación en el formulario === */
-#mensajeNoticia {
-  max-width: 800px;
-  margin: 1rem auto; /* Separación del contenido arriba y abajo */
-  padding: 1rem 1.5rem;
-  border-radius: 1rem;
-  font-weight: 600;
-  font-size: 1rem;
-  text-align: center;
-  box-sizing: border-box;
-  /* Oculto por defecto, se mostrará con JS cambiando display */
-  display: none;
-}
-
-/* Mensaje de error: fondo rojo claro con texto rojo oscuro */
-.mensaje-error {
-  background-color: #f8d7da; /* rojo muy claro */
-  color: #721c24; /* rojo oscuro */
-  border: 2px solid #f5c6cb;
-}
-
-/* Mensaje de éxito: fondo verde claro con texto verde oscuro */
-.mensaje-exito {
-  background-color: #d4edda; /* verde muy claro */
-  color: #155724; /* verde oscuro */
-  border: 2px solid #c3e6cb;
-}
-
-/* Adaptación mobile: tamaño de fuente más pequeño y padding ajustado */
-@media (max-width: 480px) {
-  #mensajeNoticia {
-    font-size: 0.9rem;
-    padding: 0.8rem 1rem;
-  }
-}

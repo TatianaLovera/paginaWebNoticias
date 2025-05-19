@@ -1,16 +1,14 @@
 [
   {
     "usuario": "admin1",
+    "correo": "adm@outlook.com",
     "clave": "adminpass",
     "rol": "administrador"
   },
-  {
-    "usuario": "empleado1",
-    "clave": "clave123",
-    "rol": "empleado"
-  },
+ 
   {
     "usuario": "vecino1",
+    "correo": "vec@outlook.com",
     "clave": "vecino456",
     "rol": "vecino"
   }
