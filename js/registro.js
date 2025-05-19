@@ -80,8 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
       newsletter,
       rol: 'vecino'
     };
-
-    console.log('Nuevo usuario registrado:', nuevoUsuario);
+    
     alert('Registro exitoso. Podés iniciar sesión ahora.');
     window.location.href = '../login.html';
   });
