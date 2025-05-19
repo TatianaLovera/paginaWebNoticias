@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         menu.appendChild(opcionPreguntasPendientes);
         menu.appendChild(opcionCerrarSesionAdmin);
         break;
-        
+
       case 'vecino':
 
       // Opción: perfil
@@ -247,31 +247,33 @@ window.addEventListener('click', (event) => {
   }
 });
 
-
-
-// === Función que filtra y muestra las noticias en base a los criterios ===
 function aplicarFiltros() {
   const texto = inputTexto.value.trim().toLowerCase();
   const fecha = inputFecha.value;
   const categoria = inputCategoria.value.toLowerCase();
 
-  const noticiasFiltradas = todasLasNoticias.filter(noticia => {
-    const coincideTexto =
-      noticia.titulo.toLowerCase().includes(texto) ||
-      noticia.resumen.toLowerCase().includes(texto) ||
-      texto === '';
+  const noticiasFiltradas = [];
 
-    const coincideFecha = fecha === '' || noticia.fecha === fecha;
-    const coincideCategoria = categoria === '' || noticia.categoria.toLowerCase() === categoria;
+  for (let i = 0; i < todasLasNoticias.length; i++) {
+    const noticia = todasLasNoticias[i];
 
-    return coincideTexto && coincideFecha && coincideCategoria;
-  });
+    const tituloCoincide = noticia.titulo.toLowerCase().includes(texto);
+    const resumenCoincide = noticia.resumen.toLowerCase().includes(texto);
+    const textoCoincide = texto === '' || tituloCoincide || resumenCoincide;
 
-  // Reemplazar noticias en pantalla con las filtradas
-  mostrarNoticias(noticiasFiltradas); // Función que debes tener para renderizar las tarjetas
+    const fechaCoincide = fecha === '' || noticia.fecha === fecha;
+    const categoriaCoincide = categoria === '' || noticia.categoria.toLowerCase() === categoria;
 
-  console.log('Filtrado con:', { texto, fecha, categoria });
+    if (textoCoincide && fechaCoincide && categoriaCoincide) {
+      noticiasFiltradas.push(noticia);
+    }
+  }
+
+  // Mostrar las noticias filtradas
+  mostrarNoticias(noticiasFiltradas);
 }
+
+
 
 // === Lógica para botón de aplicar filtros ===
 btnAplicarFiltros.addEventListener('click', () => {
