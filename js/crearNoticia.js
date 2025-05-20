@@ -53,7 +53,7 @@ function guardarDatos(event) {
     registrarNoticia(nuevaNoticia);
 
     // Muestra mensaje de éxito
-    alert('¡Noticia creada exitosamente! Será revisada por un administrador.');
+    alert('¡Noticia creada exitosamente! -Pendiente de publicación- ');
 
     // Redireccionar a index.html 
     window.location.href = "index.html";
