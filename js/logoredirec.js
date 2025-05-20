@@ -88,11 +88,24 @@ document.addEventListener('DOMContentLoaded', function () {
       case 'vecino':
 
       // Opción: perfil
-     const opcionPerfilVec = document.createElement('li');
+          const opcionPerfilVec = document.createElement('li');
       opcionPerfilVec.textContent = 'Mi perfil';
+
       opcionPerfilVec.addEventListener('click', () => {
-        window.location.href = 'usuario/perfil.html';
+        const rutaActual = window.location.pathname;
+
+        if (rutaActual.endsWith('/usuario/perfil.html')) {
+          // Ya estás en perfil, no navegamos
+          return;
+        }
+
+        if (rutaActual.includes('/usuario/')) {
+          window.location.href = 'perfil.html';
+        } else {
+          window.location.href = 'usuario/perfil.html';
+        }
       });
+
 
       // Opción: Mis preguntas
       const opcionMisPreguntasVec = document.createElement('li');
