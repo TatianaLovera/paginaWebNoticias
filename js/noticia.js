@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (texto !== '') {
       // Mostrar alerta que confirma el envío
-      alert("Pregunta enviada al administrador. Quedará pendiente de respuesta.");
+      alert("Pregunta enviada con éxito la misma queda pendiente de publicación.");
 
       // Limpiar el textarea para poder hacer otra pregunta
       document.getElementById('comentarioTexto').value = '';
