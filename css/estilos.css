@@ -28,7 +28,7 @@ header {
 }
 
 
-/* Espacio del logo (vacío por ahora) */
+/* Espacio del logo */
 .logo {
     flex: 1 1 150px;
     /* flexible pero con mínimo 150px */
@@ -39,7 +39,7 @@ header {
   height: auto;
 }
 
-/* Espacio para publicidad */
+/* Espacio para publicidad (actualemnte dice municipalidad de malvinas argentinas) */
 .publicidad {
     flex: 2 1 300px;
     font-size: 14px;
