@@ -46,6 +46,15 @@ header {
     padding-left: 20px;
 }
 
+.publicidad p {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem; /* Ajustalo a gusto, es un poco más grande */
+  font-weight: normal; /* Oswald es condensada, podés probar con normal o 500 */
+  color: #ffffff; /* O el color que estés usando */
+  margin: 0; /* Opcional, para controlar espacio */
+}
+
+
 /* Botón iniciar sesión en verde */
 .login button {
     background-color: #2ca02c;/* Verde */
