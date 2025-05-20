@@ -97,6 +97,23 @@ main h2 {
 }
 
 
+h2.noticias-titulo {
+  font-family: 'Noto Serif', serif;
+  font-size: 3rem; /* Más grande para Noticias */
+  margin-bottom: 0.5em;
+    color: #0a0869;
+
+}
+
+h2.novedades-subtitulo {
+  font-family: 'Noto Serif', serif;
+  font-size: 1.3rem; /* Más chico que Noticias */
+  font-weight: normal;
+  margin-top: 0;
+  color: #0e0236;
+}
+
+
 /*acomoda la imagen de la noticia*/
 .imagen-noticia {
     width: 100%;
@@ -364,6 +381,25 @@ input[type="password"] {
   align-items: center;
   margin: 40px 0;
 }
+
+.perfil-titulo {
+  font-family: 'Noto Serif', serif;
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+  text-align: center;
+  color: #160672;
+}
+
+.perfil-subtitulo {
+  font-family: 'Noto Serif', serif;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-align: center;
+  color: #060138;
+  margin-top: -0.5em;
+  margin-bottom: 1em;
+}
+
 
 .opciones-container {
   max-width: 400px;
