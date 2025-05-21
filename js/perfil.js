@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const clave = document.getElementById('clave').value.trim();
     const newsletter = document.getElementById('newsletter').checked;
 
-    // Simulamos el guardado (podrías mostrarlo por consola si querés)
+    // Simulamos el guardado
     const usuarioActualizado = {
       nombre,
       usuario,
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log('Datos simulados guardados:', usuarioActualizado);
 
-    // Mostrar alerta de éxito y redirigir
     alert('Los cambios se guardaron con éxito.');
     window.location.href = '../index.html';
   });
