@@ -6,6 +6,8 @@
   background-color: #ffffff; /* Blanco de fondo */
   border-radius: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Para transición suave cuando cambia tamaño */
+  transition: all 0.3s ease;
 }
 
 /* Título del formulario */
@@ -43,7 +45,7 @@
 .formulario button {
   margin-top: 1.5rem;
   padding: 0.7rem 1.5rem;
-  background-color: #1b5e20; /* Verde principal */
+  background-color: #1b5e20; /* Verde institucional */
   color: #ffffff;
   border: none;
   border-radius: 1rem;
@@ -89,4 +91,56 @@
 
 .resultados-direccion li:hover {
   background-color: #e3f2fd; /* Azul claro para hover */
+}
+
+/* === Layout lado a lado cuando hay dirección (pantallas grandes) === */
+@media (min-width: 700px) {
+  .contenedor-formulario.dos-columnas {
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+    /* altura fija para controlar mejor el centrado */
+    height: 480px; /* un poco más que la altura del mapa + algo de espacio */
+  }
+
+  .contenedor-formulario.dos-columnas .formulario {
+    width: 48%;
+    /* que ocupe toda la altura */
+    height: 100%;
+    overflow-y: auto; /* si es mucho contenido, que se pueda scrollear */
+  }
+
+  .contenedor-formulario.dos-columnas #contenedor-mapa {
+    width: 48%;
+    height: 100%; /* que ocupe toda la altura definida */
+    display: flex;
+    justify-content: center; /* centrar horizontal */
+    align-items: center;     /* centrar vertical */
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* === Contenedor del mapa, sin bordes visibles del contenedor para que no se vea espacio que sobra === */
+#contenedor-mapa {
+  display: none;
+  transition: all 0.3s ease;
+}
+
+/* Div que contiene el mapa Leaflet */
+#mapa {
+  width: 100%;
+  height: 400px; /* altura fija */
+  
+}
+
+/* === Responsive para pantallas chicas === */
+@media (max-width: 699px) {
+  .contenedor-formulario.dos-columnas,
+  #contenedor-mapa.dos-columnas {
+    display: block;
+    max-width: 90%;
+    margin: 1rem auto;
+    height: auto;
+  }
 }
