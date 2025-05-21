@@ -1,22 +1,20 @@
-// Espera a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('form'); // Referencia al formulario de login
-  const inputUsuario = document.getElementById('usuario'); // Campo de entrada para el nombre de usuario
-  const inputClave = document.getElementById('clave');     // Campo de entrada para la contraseña
+  const form = document.querySelector('form');
+  const inputUsuario = document.getElementById('usuario');
+  const inputClave = document.getElementById('clave'); 
 
-  let usuarios = []; // Lista que se llenará con los usuarios obtenidos del JSON
+  let usuarios = []; 
 
   // 1. Cargar los usuarios desde el archivo JSON alojado en GitHub
   fetch('https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/datos/usuarios.json')
     .then(response => {
-      // Verifica si la respuesta es correcta
       if (!response.ok) {
         throw new Error('No se pudo obtener el archivo de usuarios desde GitHub');
       }
-      return response.json(); // Convierte la respuesta a JSON
+      return response.json(); 
     })
     .then(data => {
-      usuarios = data; // Asigna los usuarios a la variable
+      usuarios = data; 
     })
     .catch(error => {
       console.error('Error al cargar el archivo de usuarios:', error);
@@ -27,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (event) {
     event.preventDefault(); // Evita que se recargue la página
 
-    const usuarioIngresado = inputUsuario.value.trim(); // Elimina espacios antes y después
+    const usuarioIngresado = inputUsuario.value.trim(); 
     const claveIngresada = inputClave.value.trim();
 
     // 3. Buscar si existe un usuario con esos datos
