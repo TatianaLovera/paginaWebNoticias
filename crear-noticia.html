@@ -14,7 +14,6 @@
 </head>
 
 <body>
-  <!-- Encabezado (Header) con logo, publicidad y login -->
   <header>
     <div id="logo-tarjeta" class="logo-tarjeta">
       <img id="logo"
@@ -27,7 +26,7 @@
   </div>
 
     <div class="login">
-      <!-- Botón para iniciar sesión -->
+      <!-- Boton para iniciar sesion -->
       <button id="loginBtn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
     </div>
   </header>
@@ -36,9 +35,9 @@
 
     <!-- Formulario para crear la noticia -->
     <form id="formNoticia" class="formulario">
-       <!-- Título de la sección -->
+
       <h1>Crear Nueva Noticia</h1>
-      <!-- Campo para el título -->
+      <!-- Campo para el titulo -->
       <label for="titulo">Título* (máximo 20 caracteres):</label>
       <input type="text" id="titulo" name="titulo" maxlength="20" required />
 
@@ -54,7 +53,7 @@
       <label for="imagen">Imagen relacionada:</label>
       <input type="file" id="imagen" name="imagen" accept="image/*" />
 
-      <!-- Desplegable para seleccionar categoría -->
+      <!-- Desplegable para seleccionar categoria -->
       <label for="categoria">Categoría*:</label>
       <select id="categoria" name="categoria" required>
         <option value="">Seleccione una categoría</option>
@@ -69,19 +68,17 @@
       
       </select>
 
-      <!-- Campo de dirección y botón para buscar -->
+      <!-- Campo de direccion y boton para buscar -->
       <label for="direccion">Dirección:</label>
       <input type="text" id="direccion" name="direccion" placeholder="Ej: Calle Falsa 123, Municipio"
         oninput="eliminarDirecciones()" required />
       <button type="button" onclick="normalizarDireccion()">Buscar dirección</button>
 
-      <!-- Aviso de formato incorrecto o incompleto -->
       <p id="avisoDatosIncompletos" class="aviso" style="display:none; color: red;"></p>
 
-      <!-- Resultados sugeridos por la API de normalización -->
+      <!-- Resultados sugeridos por la API de normalizacion -->
       <div id="resultadosDireccion" class="resultados-direccion"></div>
 
-      <!-- Botones del formulario -->
       <div class="botones-formulario">
         <button type="button" id="crearNoticia">Crear noticia</button>
         <button type="button" id="cancelarRegistro">Cancelar</button>
@@ -95,7 +92,6 @@
 
   </main>
 
-  <!-- Pie de página (Footer) -->
   <footer>
     <ul>
       <li><a href="#">Trabajá con nosotros</a></li>
@@ -105,15 +101,12 @@
     <p>&copy; 2025 Municipio de Malvinas Argentinas</p>
   </footer>
 
-  <!-- Script para buscar y seleccionar dirección -->
   <script src="js/normalizarDireccion.js"></script>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- Script con lógica del formulario -->
   <script src="js/crearNoticia.js"></script>
   
-    <!-- Script para validar usuario login -->
   <script src="js/verificarLoginUsuario.js"></script>
 
   <script src="js/comportamientoHead.js"></script>

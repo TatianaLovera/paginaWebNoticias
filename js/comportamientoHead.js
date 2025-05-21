@@ -1,61 +1,61 @@
-// Este script se encarga de manejar la interacción desde la página principal (index.html)
+// Este script se encarga de manejar la interacción desde la pagina principal (index.html)
 document.addEventListener('DOMContentLoaded', function () {
   const loginBtn = document.getElementById('loginBtn');
 
 
-  // Verificar si hay un usuario logueado en sessionStorage
+  // Verifica si hay un usuario logueado en sessionStorage
   const usuarioGuardado = sessionStorage.getItem('usuarioLogueado');
   if (usuarioGuardado) {
     const usuario = JSON.parse(usuarioGuardado);
     const nombreUsuario = usuario.usuario;
     const rol = usuario.rol;
 
-    // Ocultar botón de login ya que el usuario está logueado
+    // Oculta el boton de login ya que el usuario esta logueado
     if (loginBtn) {
       loginBtn.style.display = 'none';
     }
 
     const loginDiv = document.querySelector('.login');
 
-    // Contenedor para el botón del usuario y el menú desplegable
+    // Contenedor para el boton del usuario y el menu desplegable
     const contenedorUsuario = document.createElement('div');
     contenedorUsuario.classList.add('contenedor-usuario');
 
-    // Crear botón con el nombre del usuario
+    // Crea un boton con el nombre del usuario
     const usuarioBtn = document.createElement('button');
     usuarioBtn.textContent = nombreUsuario;
     usuarioBtn.classList.add('btn-usuario');
 
-    // Crear el menú desplegable, se define según el rol del usuario
+    // Crea el menu desplegable, dependiendo el rol del usuario
     let menu = document.createElement('ul');
     menu.classList.add('menu-desplegable');
     menu.style.display = 'none';
 
-    // Usamos switch para asignar opciones según rol
+    // Usamos switch para asignar opciones segun el rol
     switch (rol) {
       case 'administrador':
-        // Opción: Crear noticia
+        // Crear noticia
         const opcionCrearNoticiaAdmin = document.createElement('li');
         opcionCrearNoticiaAdmin.textContent = 'Crear noticia';
         opcionCrearNoticiaAdmin.addEventListener('click', () => {
           window.location.href = 'crear-noticia.html';
         });
 
-        // Opción: Noticias pendientes
+        // Noticias pendientes
         const opcionNoticiasPendientes = document.createElement('li');
         opcionNoticiasPendientes.textContent = 'Noticias pendientes';
         opcionNoticiasPendientes.addEventListener('click', () => {
           window.location.href = 'enConstruccion.html';
         });
 
-        // Opción: Preguntas pendientes
+        // Preguntas pendientes
         const opcionPreguntasPendientes = document.createElement('li');
         opcionPreguntasPendientes.textContent = 'Preguntas pendientes';
         opcionPreguntasPendientes.addEventListener('click', () => {
           window.location.href = 'enConstruccion.html';
         });
 
-        // Opción: Cerrar sesión
+        // Cerrar sesión
         const opcionCerrarSesionAdmin = document.createElement('li');
         opcionCerrarSesionAdmin.textContent = 'Cerrar sesión';
         opcionCerrarSesionAdmin.addEventListener('click', () => {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       case 'vecino':
 
-      // Opción: perfil
+      // Perfil
           const opcionPerfilVec = document.createElement('li');
       opcionPerfilVec.textContent = 'Mi perfil';
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const rutaActual = window.location.pathname;
 
         if (rutaActual.endsWith('/usuario/perfil.html')) {
-          // Ya estás en perfil, no navegamos
+          // Ya esta en el perfil, no navegamos
           return;
         }
 
@@ -92,13 +92,13 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
 
-      // Opción: Mis preguntas
+      // Mis preguntas
       const opcionMisPreguntasVec = document.createElement('li');
       opcionMisPreguntasVec.textContent = 'Mis preguntas';
       opcionMisPreguntasVec.addEventListener('click', () => {
         const rutaActual = window.location.pathname;
         
-        // Si estás en una subcarpeta como /usuario/
+        // Si estas en una subcarpeta como /usuario/
         if (rutaActual.includes('/usuario/')) {
           window.location.href = '../enConstruccion.html';
         } else {
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
 
-        // Opción: Cerrar sesión
+        // Cerrar sesión
         const opcionCerrarSesionVec = document.createElement('li');
         opcionCerrarSesionVec.textContent = 'Cerrar sesión';
         opcionCerrarSesionVec.addEventListener('click', () => {
@@ -115,14 +115,14 @@ document.addEventListener('DOMContentLoaded', function () {
           location.reload();
         });
 
-        // Agregamos las opciones al menú
+        // Agregamos las opciones al menu
         menu.appendChild(opcionPerfilVec);
         menu.appendChild(opcionMisPreguntasVec);
         menu.appendChild(opcionCerrarSesionVec);
         break;
 
       default:
-        // Si el rol no coincide, solo mostrar el botón que cierra sesión con confirmación
+        // Si el rol no coincide, solo mostrar el boton que cierra sesion con confirmacion
         usuarioBtn.addEventListener('click', function () {
           const cerrar = confirm('¿Querés cerrar sesión?');
           if (cerrar) {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
         break;
     }
 
-    // Solo si el menú tiene hijos, agregamos la lógica para mostrar/ocultar
+    // Solo si el menu tiene hijos, agregamos la logica para mostrar/ocultar
     if (menu.children.length > 0) {
       usuarioBtn.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -146,12 +146,12 @@ document.addEventListener('DOMContentLoaded', function () {
           }, 300);
         } else {
           menu.style.display = 'block';
-          void menu.offsetHeight; // fuerza el reflow para activar transición
+          void menu.offsetHeight; // fuerza el reflow para activar transicion
           menu.classList.add('menu-visible');
         }
       });
 
-      // Cerrar menú al hacer clic fuera de él
+      // Cierra el menu al hacer clic fuera de el
       document.addEventListener('click', () => {
         if (menu.classList.contains('menu-visible')) {
           menu.classList.remove('menu-visible');
@@ -163,16 +163,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      // Agregamos el menú al contenedor
+      // Agregamos el menu al contenedor
       contenedorUsuario.appendChild(menu);
     }
 
-    // Agregamos el botón al contenedor
+    // Agregamos el boton al contenedor
     contenedorUsuario.appendChild(usuarioBtn);
     loginDiv.appendChild(contenedorUsuario);
 
   } else {
-    // Si no hay usuario logueado, el botón de login redirige a login.html
+    // Si no hay usuario logueado, el boton de login redirige a login.html
     loginBtn.addEventListener('click', function () {
       window.location.href = 'login.html';
     });

@@ -25,26 +25,20 @@
 
   <main class="container">
     <article class="detalle-noticia">
-      <!-- Título de la noticia -->
       <h1 id="tituloNoticia"></h1>
 
-      <!-- Imagen de la noticia (se mostrará solo si está disponible) -->
       <img id="imagenNoticia" class="imagen-detalle" src="" alt="Imagen de la noticia" style="display: none;" />
 
-      <!-- Categoría de la noticia -->
       <p id="categoriaNoticia" class="categoria"></p>
 
-      <!-- Resumen de la noticia -->
       <p id="resumenNoticia" class="resumen"></p>
 
-      <!-- Contenido completo de la noticia -->
       <p id="contenidoNoticia" class="contenido"></p>
 
-      <!-- Mapa de ubicación (se mostrará solo si hay dirección) -->
+      <!-- Mapa de ubicación (se mostrara solo si hay direccion) -->
       <div id="map" style="height: 300px; width: 100%; display: none; margin-top: 20px;"></div>
     </article>
 
-    <!-- Sección de comentarios -->
     <section class="comentarios">
       <h2>Preguntas sobre esta noticia</h2>
       <div id="mensajeLogin" class="mensaje-info" style="display:none;">
@@ -61,7 +55,7 @@
       </div>
     </section>
 
-    <!-- Botón para volver al inicio -->
+    <!-- Boton para volver al inicio -->
   <div class="contenedor-volver">
     <a href="index.html" class="enlace-volver">
       <button class="boton-volver-al-inicio">
@@ -82,8 +76,9 @@
 
   <!-- Leaflet JS para el mapa -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- Script personalizado para manejar la lógica de la noticia -->
+
   <script src="js/noticia.js"></script>
+
   <!-- Script para el funcionamiento de la parte del boton de inciiar sesion y logo -->
   <script src="js/comportamientoHead.js"></script>
 
