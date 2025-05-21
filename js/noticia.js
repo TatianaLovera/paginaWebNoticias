@@ -1,5 +1,3 @@
-// noticia.js
-
 document.addEventListener('DOMContentLoaded', function () {
   // Obtener parámetros de la URL (por ejemplo ?id=1)
   const params = new URLSearchParams(window.location.search);
