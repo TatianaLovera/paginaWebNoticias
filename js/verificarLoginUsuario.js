@@ -1,4 +1,4 @@
-// ✅ VALIDACIÓN DE SESIÓN - REDIRECCIÓN SI NO HAY USUARIO
+// Validacion de sesion - se redirecciona en el caso de que no haya usuario
 if (!sessionStorage.getItem('usuarioLogueado')) {
   // Excepciones: permitimos acceder a index.html y login.html sin estar logueado
   const paginaActual = window.location.pathname.split('/').pop();
@@ -8,7 +8,7 @@ if (!sessionStorage.getItem('usuarioLogueado')) {
     alert('Necesitás estar logueado para acceder a esta página.');
             const rutaActual = window.location.pathname;
         
-        // Si estás en una subcarpeta como /usuario/
+        // Si estas en una subcarpeta como /usuario/
         if (rutaActual.includes('/usuario/')) {
           window.location.href = '../index.html';
         } else {
@@ -17,7 +17,7 @@ if (!sessionStorage.getItem('usuarioLogueado')) {
   }
 }
 
-// ✅ CIERRE DE SESIÓN DESDE OTRA PESTAÑA
+// Cierre de sesion desde otra pestaña
 window.addEventListener('storage', function(event) {
   if (event.key === 'usuarioLogueado' && event.newValue === null) {
     alert('Tu sesión ha sido cerrada.');

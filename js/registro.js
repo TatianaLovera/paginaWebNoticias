@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let correoValido = false;
   let usuarioValido = false;
 
-  // Cargar usuarios ya registrados
+  // Se cargan los usuarios ya registrados
   fetch('../datos/usuarios.json')
     .then(response => response.json())
     .then(data => {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error('Error al cargar usuarios:', error);
     });
 
-  // Validar correo en tiempo real
+  // Se valida el correo
   inputCorreo.addEventListener('input', function () {
     const correo = inputCorreo.value.trim().toLowerCase();
     correoValido = !usuarios.some(u => u.correo && u.correo.toLowerCase() === correo);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     validarFormulario();
   });
 
-  // Validar nombre de usuario en tiempo real
+  // Se valida el nombre de usuario
   inputUsuario.addEventListener('input', function () {
     const nombreUsuario = inputUsuario.value.trim().toLowerCase();
     usuarioValido = !usuarios.some(u => u.usuario && u.usuario.toLowerCase() === nombreUsuario);

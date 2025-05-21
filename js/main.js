@@ -1,13 +1,9 @@
-
-
-  // Cargar y mostrar noticias públicas desde GitHub
-  cargarNoticiasPublicas();
+cargarNoticiasPublicas();
 
 //Para el filtro de fecha y categoria
 let todasLasNoticias = [];
 
-
-// Cargar y mostrar solo noticias públicas desde GitHub
+// Cargamos y mostramos solo noticias publicas
 function cargarNoticiasPublicas() {
   fetch('https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/datos/noticias.json')
     .then(response => {
@@ -30,7 +26,7 @@ function cargarNoticiasPublicas() {
     .catch(error => {
       console.error('Error al cargar las noticias desde GitHub:', error);
 
-      // Mostrar mensaje en la página para que el usuario lo sepa
+      // Le mostramos el mensaje en la página para que el usuario lo sepa
       const contenedorNoticias = document.getElementById('contenedor-noticias');
       if (contenedorNoticias) {
         contenedorNoticias.innerHTML = `
@@ -42,7 +38,7 @@ function cargarNoticiasPublicas() {
     });
 }
 
-// === Selección de elementos del DOM ===
+// Seleccion de elementos del DOM 
 const btnFiltros = document.getElementById('btnFiltros');
 const dropdownFiltros = document.getElementById('dropdownFiltros');
 const btnAplicarFiltros = document.getElementById('btnAplicarFiltros');
@@ -51,15 +47,15 @@ const inputTexto = document.getElementById('filtroTexto');
 const inputFecha = document.getElementById('filtroFecha');
 const inputCategoria = document.getElementById('filtroCategoria');
 
-// === Alternar visibilidad del menú de filtros ===
+// Alternamos la visibilidad del menu de filtros
 btnFiltros.addEventListener('click', () => {
-  dropdownFiltros.style.display = 
+  dropdownFiltros.style.display =
     dropdownFiltros.style.display === 'none' || dropdownFiltros.style.display === ''
       ? 'block'
       : 'none';
 });
 
-// === Ocultar el menú si se hace clic fuera ===
+// Se oculta el menu si se hace clic fuera de el
 window.addEventListener('click', (event) => {
   if (!btnFiltros.contains(event.target) && !dropdownFiltros.contains(event.target)) {
     dropdownFiltros.style.display = 'none';
@@ -88,19 +84,18 @@ function aplicarFiltros() {
     }
   }
 
-  // Mostrar las noticias filtradas
+  // Se muestran las noticias filtradas
   mostrarNoticias(noticiasFiltradas);
 }
 
 
-
-// === Lógica para botón de aplicar filtros ===
+// Logica para boton de aplicar filtros
 btnAplicarFiltros.addEventListener('click', () => {
   aplicarFiltros();
   dropdownFiltros.style.display = 'none';
 });
 
-// === Búsqueda instantánea al escribir ===
+// Busqueda instantanea al escribir
 inputTexto.addEventListener('input', () => {
   aplicarFiltros();
 });
@@ -137,7 +132,7 @@ function mostrarNoticias(noticias) {
     tarjeta.appendChild(titulo);
     tarjeta.appendChild(resumen);
 
-    // Al hacer clic en la tarjeta se abre la noticia específica
+    // Al hacer clic en la tarjeta se abre la noticia especifica
     tarjeta.addEventListener('click', () => {
       window.location.href = `noticia.html?id=${noticia.id}`;
     });

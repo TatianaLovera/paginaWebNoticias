@@ -3,9 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnGuardar = document.querySelector('.btn-guardar-cambios');
 
   form.addEventListener('submit', function (event) {
-    event.preventDefault(); // Evita recargar la página
+    event.preventDefault();
 
-    // Obtener los valores ingresados
     const nombre = document.getElementById('nombre').value.trim();
     const usuario = document.getElementById('usuario').value.trim();
     const correo = document.getElementById('correo').value.trim();

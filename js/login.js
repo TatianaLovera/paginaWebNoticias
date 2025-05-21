@@ -1,34 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('form');
   const inputUsuario = document.getElementById('usuario');
-  const inputClave = document.getElementById('clave'); 
+  const inputClave = document.getElementById('clave');
 
-  let usuarios = []; 
+  let usuarios = [];
 
-  // 1. Cargar los usuarios desde el archivo JSON alojado en GitHub
+  // Cargamos los usuarios desde el archivo JSON 
   fetch('https://raw.githubusercontent.com/TatianaLovera/paginaWebNoticias/main/datos/usuarios.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('No se pudo obtener el archivo de usuarios desde GitHub');
       }
-      return response.json(); 
+      return response.json();
     })
     .then(data => {
-      usuarios = data; 
+      usuarios = data;
     })
     .catch(error => {
       console.error('Error al cargar el archivo de usuarios:', error);
       alert('Hubo un problema al cargar los usuarios. Por favor intentá más tarde.');
     });
 
-  // 2. Manejo del envío del formulario
+  // Manejo del envio del formulario
   form.addEventListener('submit', function (event) {
-    event.preventDefault(); // Evita que se recargue la página
+    event.preventDefault();
 
-    const usuarioIngresado = inputUsuario.value.trim(); 
+    const usuarioIngresado = inputUsuario.value.trim();
     const claveIngresada = inputClave.value.trim();
 
-    // 3. Buscar si existe un usuario con esos datos
+    // Buscamos si existe un usuario con esos datos
     const usuarioEncontrado = usuarios.find(
       u => u.usuario === usuarioIngresado && u.clave === claveIngresada
     );
@@ -36,28 +36,26 @@ document.addEventListener('DOMContentLoaded', function () {
     if (usuarioEncontrado) {
       const rol = usuarioEncontrado.rol;
 
-      // 4. Mensaje de bienvenida personalizado
       alert(`Bienvenido, ${usuarioIngresado}! Rol: ${rol}`);
 
-      // 5. Guardar usuario en sessionStorage para que se recuerde en otras páginas
+      // Guardamos al usuario en sessionStorage para que se recuerde en otras paginas cuando se 
       sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
 
-      // 6. Redirigir al index luego del login exitoso
+      // Una vez que se inicio sesion se redirecciona a la pagina principal
       window.location.href = 'index.html';
     } else {
-      // 7. Mostrar mensaje de error si los datos no coinciden
       alert('Usuario o contraseña incorrectos.');
       inputUsuario.value = "";
       inputClave.value = "";
     }
   });
   const toggleBtn = document.getElementById('toggleClave');
-const claveInput = document.getElementById('clave');
+  const claveInput = document.getElementById('clave');
 
-toggleBtn.addEventListener('click', function () {
-  const tipoActual = claveInput.getAttribute('type');
-  claveInput.setAttribute('type', tipoActual === 'password' ? 'text' : 'password');
-  toggleBtn.textContent = tipoActual === 'password' ? '🙈' : '👁️';
-});
+  toggleBtn.addEventListener('click', function () {
+    const tipoActual = claveInput.getAttribute('type');
+    claveInput.setAttribute('type', tipoActual === 'password' ? 'text' : 'password');
+    toggleBtn.textContent = tipoActual === 'password' ? '🙈' : '👁️';
+  });
 
 });
