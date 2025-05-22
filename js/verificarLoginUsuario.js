@@ -8,7 +8,6 @@ if (!sessionStorage.getItem('usuarioLogueado')) {
     alert('Necesitás estar logueado para acceder a esta página.');
             const rutaActual = window.location.pathname;
         
-        // Si estas en una subcarpeta como /usuario/
         if (rutaActual.includes('/usuario/')) {
           window.location.href = '../index.html';
         } else {

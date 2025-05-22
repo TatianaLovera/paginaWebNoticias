@@ -1,6 +1,5 @@
 cargarNoticiasPublicas();
 
-//Para el filtro de fecha y categoria
 let todasLasNoticias = [];
 
 // Cargamos y mostramos solo noticias publicas
@@ -26,7 +25,7 @@ function cargarNoticiasPublicas() {
     .catch(error => {
       console.error('Error al cargar las noticias desde GitHub:', error);
 
-      // Le mostramos el mensaje en la página para que el usuario lo sepa
+      // Si no se pueden cargar las noticias, muestra mensaje de error.
       const contenedorNoticias = document.getElementById('contenedor-noticias');
       if (contenedorNoticias) {
         contenedorNoticias.innerHTML = `
@@ -38,7 +37,7 @@ function cargarNoticiasPublicas() {
     });
 }
 
-// Seleccion de elementos del DOM 
+// Filtros de búsqueda
 const btnFiltros = document.getElementById('btnFiltros');
 const dropdownFiltros = document.getElementById('dropdownFiltros');
 const btnAplicarFiltros = document.getElementById('btnAplicarFiltros');
@@ -47,7 +46,6 @@ const inputTexto = document.getElementById('filtroTexto');
 const inputFecha = document.getElementById('filtroFecha');
 const inputCategoria = document.getElementById('filtroCategoria');
 
-// Alternamos la visibilidad del menu de filtros
 btnFiltros.addEventListener('click', () => {
   dropdownFiltros.style.display =
     dropdownFiltros.style.display === 'none' || dropdownFiltros.style.display === ''
@@ -55,8 +53,7 @@ btnFiltros.addEventListener('click', () => {
       : 'none';
 });
 
-// Se oculta el menu si se hace clic fuera de el
-window.addEventListener('click', (event) => {
+  window.addEventListener('click', (event) => {
   if (!btnFiltros.contains(event.target) && !dropdownFiltros.contains(event.target)) {
     dropdownFiltros.style.display = 'none';
   }
@@ -84,18 +81,15 @@ function aplicarFiltros() {
     }
   }
 
-  // Se muestran las noticias filtradas
   mostrarNoticias(noticiasFiltradas);
 }
 
 
-// Logica para boton de aplicar filtros
 btnAplicarFiltros.addEventListener('click', () => {
   aplicarFiltros();
   dropdownFiltros.style.display = 'none';
 });
 
-// Busqueda instantanea al escribir
 inputTexto.addEventListener('input', () => {
   aplicarFiltros();
 });
@@ -132,7 +126,6 @@ function mostrarNoticias(noticias) {
     tarjeta.appendChild(titulo);
     tarjeta.appendChild(resumen);
 
-    // Al hacer clic en la tarjeta se abre la noticia especifica
     tarjeta.addEventListener('click', () => {
       window.location.href = `noticia.html?id=${noticia.id}`;
     });

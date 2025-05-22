@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const usuarioIngresado = inputUsuario.value.trim();
     const claveIngresada = inputClave.value.trim();
 
-    // Buscamos si existe un usuario con esos datos
     const usuarioEncontrado = usuarios.find(
       u => u.usuario === usuarioIngresado && u.clave === claveIngresada
     );
@@ -38,10 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       alert(`Bienvenido, ${usuarioIngresado}! Rol: ${rol}`);
 
-      // Guardamos al usuario en sessionStorage para que se recuerde en otras paginas cuando se 
       sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioEncontrado));
-
-      // Una vez que se inicio sesion se redirecciona a la pagina principal
       window.location.href = 'index.html';
     } else {
       alert('Usuario o contraseña incorrectos.');

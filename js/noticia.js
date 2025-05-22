@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Obtenemos parametros de la URL (por ejemplo id=1)
+  // Obtenemos parametros de la url (por ejemplo id 1)
   const params = new URLSearchParams(window.location.search);
   const idNoticia = params.get('id');
 
@@ -61,35 +61,26 @@ document.addEventListener('DOMContentLoaded', function () {
     alert('No se especificó una noticia.');
   }
 
-  // --- Manejo login para mostrar formulario o mensaje ---
-
-  // Obtenemos el usuario logueado desde sessionStorage 
+  // Preguntas en noticia
   const usuarioLogueado = JSON.parse(sessionStorage.getItem('usuarioLogueado'));
 
   if (usuarioLogueado) {
-    // Formulario para dejar preguntas/comentarios
     document.getElementById('formComentario').style.display = 'block';
     document.getElementById('mensajeLogin').style.display = 'none';
   } else {
-    //Mostramos un mensaje para que inicie sesion
     document.getElementById('formComentario').style.display = 'none';
     document.getElementById('mensajeLogin').style.display = 'block';
   }
 
-  // --- Manejo del envio de preguntas ---
 
   document.getElementById('enviarComentario').addEventListener('click', (event) => {
-    event.preventDefault(); // Evitamos que el formulario recargue la pagina (si fuera un form)
+    event.preventDefault(); 
 
     const texto = document.getElementById('comentarioTexto').value.trim();
 
     if (texto !== '') {
       alert("Pregunta enviada con éxito.  -Pendiente de publicación-");
-
-      // Limpiamos el textarea para poder hacer otra pregunta
       document.getElementById('comentarioTexto').value = '';
-
-      // Asegurarmosque el formulario siga visible y el mensaje de login oculto
       document.getElementById('formComentario').style.display = 'block';
       document.getElementById('mensajeLogin').style.display = 'none';
     } else {

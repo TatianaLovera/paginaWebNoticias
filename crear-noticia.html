@@ -37,23 +37,16 @@
     <form id="formNoticia" class="formulario">
 
       <h1>Crear Nueva Noticia</h1>
-      <!-- Campo para el titulo -->
       <label for="titulo">Título* (máximo 20 caracteres):</label>
       <input type="text" id="titulo" name="titulo" maxlength="20" required />
-
-      <!-- Campo para el resumen -->
       <label for="resumen">Resumen* (máximo 100 caracteres):</label>
       <textarea id="resumen" name="resumen" maxlength="100" rows="2" required></textarea>
-
-      <!-- Campo para el contenido -->
       <label for="contenido">Contenido* (máximo 3000 caracteres):</label>
       <textarea id="contenido" name="contenido" maxlength="3000" rows="10" required></textarea>
 
-      <!-- Carga de imagen desde la computadora -->
       <label for="imagen">Imagen relacionada:</label>
       <input type="file" id="imagen" name="imagen" accept="image/*" />
 
-      <!-- Desplegable para seleccionar categoria -->
       <label for="categoria">Categoría*:</label>
       <select id="categoria" name="categoria" required>
         <option value="">Seleccione una categoría</option>
@@ -68,15 +61,11 @@
       
       </select>
 
-      <!-- Campo de direccion y boton para buscar -->
       <label for="direccion">Dirección:</label>
       <input type="text" id="direccion" name="direccion" placeholder="Ej: Calle Falsa 123, Municipio"
         oninput="eliminarDirecciones()" required />
       <button type="button" onclick="normalizarDireccion()">Buscar dirección</button>
-
       <p id="avisoDatosIncompletos" class="aviso" style="display:none; color: red;"></p>
-
-      <!-- Resultados sugeridos por la API de normalizacion -->
       <div id="resultadosDireccion" class="resultados-direccion"></div>
 
       <div class="botones-formulario">
@@ -102,13 +91,9 @@
   </footer>
 
   <script src="js/normalizarDireccion.js"></script>
-
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
   <script src="js/crearNoticia.js"></script>
-  
   <script src="js/verificarLoginUsuario.js"></script>
-
   <script src="js/comportamientoHead.js"></script>
 
 </body>
